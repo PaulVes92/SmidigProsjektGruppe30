@@ -13,7 +13,7 @@ const SalesForm = () => {
   };
 
   return (
-    <div className="container-fluid h-100 ml-1 mt-5">
+    <div className="container-fluid ml-1 mt-5">
       <form>
         <label>Fornavn</label>
         <input className="form-control mt-2" type="text" placeholder="" />
