@@ -1,12 +1,14 @@
 {
   "name": "smidig-prosjekt-gruppe30",
   "version": "0.1.0",
+  "main": "server.js",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.5.0",
+    "concurrently": "^5.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
@@ -17,14 +19,20 @@
     "react-date-picker": "^8.0.1",
     "react-datepicker": "^2.15.0",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "webpack --mode production",
+    "dev": "concurrently \"yarn watch:client\" \"yarn watch:server\"",
+    "start": "node src/server/server.js",
+    "server": "nodemon src/server/server.js",
+    "test": "jest --coverage",
+    "watch:client": "webpack --watch --mode development",
+    "watch:server": "nodemon src/server/server.js --watch src/server --watch public/bundle.js"
   },
+  "proxy": "http://localhost:5000/",
   "eslintConfig": {
     "extends": "react-app"
   },

@@ -4,12 +4,12 @@ class Login extends Component {
   state = {};
   render() {
     return (
-      <div class="row">
+      <div className="row">
         <div className="col center">
-          <div class="row justify-content-center">
+          <div className="row justify-content-center">
             <form>
               <div className="form-group">
-                <label for="InputUsername">Brukernavn</label>
+                <label htmlFor="InputUsername">Brukernavn</label>
                 <input
                   type="text"
                   className="form-control form-control-lg"
@@ -19,7 +19,7 @@ class Login extends Component {
               </div>
 
               <div className="form-group">
-                <label for="InputPassword">Passord</label>
+                <label htmlFor="InputPassword">Passord</label>
                 <input
                   type="password"
                   className="form-control form-control-lg"
@@ -28,7 +28,7 @@ class Login extends Component {
                 ></input>
               </div>
 
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" className="btn btn-primary">
                 Logg inn
               </button>
             </form>
