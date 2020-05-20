@@ -1,10 +1,10 @@
-const express = require("express");
-const app = express();
-const port = 5000;
+// const express = require("express");
+// const app = express();
+// const port = 5000;
 
-app.get("/", (req, res) => res.send("Hello world"));
+// app.get("/", (req, res) => res.send("Hello world"));
 
-app.listen(port, () => console.log(`Server running on port: ${port}`));
+// app.listen(port, () => console.log(`Server running on port: ${port}`));
 // const cors = require("cors");
 // const mongoose = require("mongoose");
 

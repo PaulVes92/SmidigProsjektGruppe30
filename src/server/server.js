@@ -1,10 +1,11 @@
 const express = require("express");
+const connectDB = require("./db/connection");
 
 app = express();
 
-const port = process.env.PORT || 8080;
+connectDB();
 
-app.get("/", (req, res) => res.send("hello world"));
+const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
   console.log("Started server on port " + port);
