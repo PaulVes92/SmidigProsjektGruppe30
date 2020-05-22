@@ -17,25 +17,18 @@ class Customers extends Component {
           </thead>
           <tbody>
             <tr>
-              <td>Random</td>
-              <td>blalaala</td>
-              <td>asdasd@kasjdk.com</td>
-              <td>gaten 0050 oslo</td>
-              <td>54332233</td>
+              <td>Random fornavn</td>
+              <td>blalaala(etternavn)</td>
+              <td>asdasd@kasjdk.com (epost)</td>
+              <td>gaten 0050 oslo (adresse)</td>
+              <td>54332233 (tlf)</td>
             </tr>
             <tr>
-              <td>fasiji</td>
-              <td>sgsdgdsg</td>
-              <td>asdas@asfasf.dsd</td>
-              <td>gaten 0050 oslo</td>
-              <td>54332233</td>
-            </tr>
-            <tr>
-              <td>asdasd</td>
-              <td>aghhtj</td>
-              <td>asfhjaa@asjdad.scon</td>
-              <td>gaten 0050 oslo</td>
-              <td>54332233</td>
+              <td>Random fornavn 2</td>
+              <td>blalaala 2(etternavn)</td>
+              <td>asdasd@kasjdk.com 2(epost)</td>
+              <td>gaten 0050 oslo 2 (adresse)</td>
+              <td>54332233 2 (tlf)</td>
             </tr>
           </tbody>
         </table>
