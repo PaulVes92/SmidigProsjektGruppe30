@@ -1,10 +1,30 @@
 const moongoose = require("mongoose");
 
-const user = new moongoose.Schema({
+const products = new moongoose.Schema({
+  id: {
+    type: Number,
+  },
   name: {
     type: String,
+  },
+  price: {
+    type: Number,
   },
   comment: {
     type: String,
   },
+  image: {
+    type: Image,
+  },
+  category: {
+    type: String,
+  },
+  size: {
+    type: String,
+  },
+  status: {
+    type: Boolean,
+  },
 });
+
+module.exports = moongoose.model("Products", products);

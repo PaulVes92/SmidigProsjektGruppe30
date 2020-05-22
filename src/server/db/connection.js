@@ -1,7 +1,7 @@
 const moongoose = require("mongoose");
+require("dotenv/config");
 
-const URI =
-  "mongodb+srv://admin:admin@cluster0-rxtwc.mongodb.net/test?retryWrites=true&w=majority";
+const URI = process.env.DB_CONNECTION;
 
 const connectDB = async () => {
   await moongoose.connect(URI, {
