@@ -1,40 +1,63 @@
 import React, { Component } from "react";
+import ReactTable from "react-table";
 
-class Customers extends Component {
-  state = {};
-  render() {
-    return (
-      <div>
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Fornavn</th>
-              <th scope="col">Etternavn</th>
-              <th scope="col">Epost</th>
-              <th scope="col">Adresse</th>
-              <th scope="col">Tlf</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Random fornavn</td>
-              <td>blalaala(etternavn)</td>
-              <td>asdasd@kasjdk.com (epost)</td>
-              <td>gaten 0050 oslo (adresse)</td>
-              <td>54332233 (tlf)</td>
-            </tr>
-            <tr>
-              <td>Random fornavn 2</td>
-              <td>blalaala 2(etternavn)</td>
-              <td>asdasd@kasjdk.com 2(epost)</td>
-              <td>gaten 0050 oslo 2 (adresse)</td>
-              <td>54332233 2 (tlf)</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    );
-  }
-}
+// const data = [
+//   {
+//     navn: "Ayaan",
+//     etternavn: "swlot",
+//     epost: "akdjask@sdkalskd.com",
+//     adresse: "smaloveien 23",
+//     tlf: "54216859",
+//   },
+//   {
+//     navn: "Ayaan 2",
+//     etternavn: "swlot 2",
+//     epost: "akdjask2@sdkalskd.com",
+//     adresse: "smaloveien 23 2",
+//     tlf: "54216859 2",
+//   },
+//   {
+//     navn: "Ayaan 3",
+//     etternavn: "swlot 3",
+//     epost: "akdjask@sdkalskd.com 3",
+//     adresse: "smaloveien 3",
+//     tlf: "54216859 3",
+//   },
+//   {
+//     navn: "Ayaan 4",
+//     etternavn: "swlot 4",
+//     epost: "akdjask@sdkalskd.com 4",
+//     adresse: "smaloveien 4",
+//     tlf: "54216859 4",
+//   },
+//   {
+//     navn: "Ayaan 5",
+//     etternavn: "swlot 5",
+//     epost: "akdjask@sdkalskd.com 5",
+//     adresse: "smaloveien 23 5",
+//     tlf: "54216859 5",
+//   },
+// ];
 
-export default Customers;
+// const columns = [
+//   {
+//     Header: "Etternavn",
+//     accessor: "etternavn",
+//   },
+//   {
+//     Header: "Fornavn",
+//     accessor: "fornavn",
+//   },
+//   {
+//     Header: "Epost",
+//     accessor: "epost",
+//   },
+//   {
+//     Header: "Adresse",
+//     accessor: "adresse",
+//   },
+//   {
+//     Header: "Tlf",
+//     accessor: "tlf",
+//   },
+// ];
