@@ -13,9 +13,6 @@ const products = new moongoose.Schema({
   comment: {
     type: String,
   },
-  image: {
-    type: Image,
-  },
   category: {
     type: String,
   },
