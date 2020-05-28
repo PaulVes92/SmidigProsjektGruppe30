@@ -1,73 +1,79 @@
 import React, { Component } from "react";
-import ReactTable from "react-table";
-//import "react-table/react-table.css";
 
-class Customers extends Component {
-  state = {};
+import { AgGridReact } from "ag-grid-react";
+
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-balham.css";
+
+class Costumers extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      columnDefs: [
+        {
+          headerName: "ID",
+          field: "id",
+          sortable: true,
+          filter: true,
+        },
+        {
+          headerName: "Etternavn",
+          field: "lastName",
+          sortable: true,
+          filter: true,
+        },
+        {
+          headerName: "Fornavn",
+          field: "firstName",
+          sortable: true,
+          filter: true,
+        },
+        { headerName: "Epost", field: "email", sortable: true, filter: true },
+        {
+          headerName: "Adresse",
+          field: "adress",
+          sortable: true,
+          filter: true,
+        },
+        {
+          headerName: "Tlf",
+          field: "phoneNumber",
+          sortable: true,
+          filter: true,
+        },
+      ],
+      rowData: null,
+      // rowData: [
+      //   { make: "Toyota1", model: "celica1", price: 35000 },
+      //   { make: "Toyota2", model: "celica2", price: 33000 },
+      //   { make: "Toyota3", model: "celica3", price: 31000 },
+      // ]
+    };
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:8080/customers")
+      .then((res) => res.json())
+      .then((rowData) => this.setState({ rowData }))
+      .catch((err) => console.log(err));
+  }
+
   render() {
-    const columns = [
-      {
-        Header: "Etternavn",
-        accessor: "etternavn",
-      },
-      {
-        Header: "Fornavn",
-        accessor: "fornavn",
-      },
-      {
-        Header: "Epost",
-        accessor: "epost",
-      },
-      {
-        Header: "Adresse",
-        accessor: "adresse",
-      },
-      {
-        Header: "Tlf",
-        accessor: "tlf",
-      },
-    ];
-
-    return <ReactTable>columns = {columns}</ReactTable>;
+    return (
+      <div
+        className="ag-theme-balham"
+        style={{
+          width: 1500,
+          height: 600,
+        }}
+      >
+        <AgGridReact
+          columnDefs={this.state.columnDefs}
+          rowData={this.state.rowData}
+        />
+      </div>
+    );
   }
 }
 
-export default Customers;
-
-// const data = [
-//   {
-//     navn: "Ayaan",
-//     etternavn: "swlot",
-//     epost: "akdjask@sdkalskd.com",
-//     adresse: "smaloveien 23",
-//     tlf: "54216859",
-//   },
-//   {
-//     navn: "Ayaan 2",
-//     etternavn: "swlot 2",
-//     epost: "akdjask2@sdkalskd.com",
-//     adresse: "smaloveien 23 2",
-//     tlf: "54216859 2",
-//   },
-//   {
-//     navn: "Ayaan 3",
-//     etternavn: "swlot 3",
-//     epost: "akdjask@sdkalskd.com 3",
-//     adresse: "smaloveien 3",
-//     tlf: "54216859 3",
-//   },
-//   {
-//     navn: "Ayaan 4",
-//     etternavn: "swlot 4",
-//     epost: "akdjask@sdkalskd.com 4",
-//     adresse: "smaloveien 4",
-//     tlf: "54216859 4",
-//   },
-//   {
-//     navn: "Ayaan 5",
-//     etternavn: "swlot 5",
-//     epost: "akdjask@sdkalskd.com 5",
-//     adresse: "smaloveien 23 5",
-//     tlf: "54216859 5",
-//   },
-// ];
+export default Costumers;
