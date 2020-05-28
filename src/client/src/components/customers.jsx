@@ -31,7 +31,7 @@ class Costumers extends Component {
         { headerName: "Epost", field: "email", sortable: true, filter: true },
         {
           headerName: "Adresse",
-          field: "adress",
+          field: "address",
           sortable: true,
           filter: true,
         },
@@ -43,11 +43,6 @@ class Costumers extends Component {
         },
       ],
       rowData: null,
-      // rowData: [
-      //   { make: "Toyota1", model: "celica1", price: 35000 },
-      //   { make: "Toyota2", model: "celica2", price: 33000 },
-      //   { make: "Toyota3", model: "celica3", price: 31000 },
-      // ]
     };
   }
 

@@ -29,11 +29,6 @@ class Products extends Component {
         { headerName: "Status", field: "status", sortable: true, filter: true },
       ],
       rowData: null,
-      // rowData: [
-      //   { make: "Toyota1", model: "celica1", price: 35000 },
-      //   { make: "Toyota2", model: "celica2", price: 33000 },
-      //   { make: "Toyota3", model: "celica3", price: 31000 },
-      // ]
     };
   }
 

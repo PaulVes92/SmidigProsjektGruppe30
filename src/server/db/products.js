@@ -1,6 +1,6 @@
-const moongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-const products = new moongoose.Schema({
+const products = new mongoose.Schema({
   id: {
     type: Number,
   },
@@ -24,4 +24,4 @@ const products = new moongoose.Schema({
   },
 });
 
-module.exports = moongoose.model("Products", products);
+module.exports = mongoose.model("Products", products);
