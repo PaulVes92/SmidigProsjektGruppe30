@@ -4,17 +4,19 @@
   
   html, #root > div{
     height: 100vh;
-    background-color: #ffffff;
+    background-color: #EBE1E1;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   }
   
   div{
-    background-color:#fcf6f3;
-    margin: 0;
-    padding: 0;
+    background-color:#EBE1E1;
   }
   
   .nav{
-    background-color:#ffffff;
+    background-color:#656472;
   }
-  
+   
+
+   
+
+   
