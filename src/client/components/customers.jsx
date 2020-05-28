@@ -1,5 +1,38 @@
 import React, { Component } from "react";
 import ReactTable from "react-table";
+//import "react-table/react-table.css";
+
+class Customers extends Component {
+  state = {};
+  render() {
+    const columns = [
+      {
+        Header: "Etternavn",
+        accessor: "etternavn",
+      },
+      {
+        Header: "Fornavn",
+        accessor: "fornavn",
+      },
+      {
+        Header: "Epost",
+        accessor: "epost",
+      },
+      {
+        Header: "Adresse",
+        accessor: "adresse",
+      },
+      {
+        Header: "Tlf",
+        accessor: "tlf",
+      },
+    ];
+
+    return <ReactTable>columns = {columns}</ReactTable>;
+  }
+}
+
+export default Customers;
 
 // const data = [
 //   {
@@ -36,28 +69,5 @@ import ReactTable from "react-table";
 //     epost: "akdjask@sdkalskd.com 5",
 //     adresse: "smaloveien 23 5",
 //     tlf: "54216859 5",
-//   },
-// ];
-
-// const columns = [
-//   {
-//     Header: "Etternavn",
-//     accessor: "etternavn",
-//   },
-//   {
-//     Header: "Fornavn",
-//     accessor: "fornavn",
-//   },
-//   {
-//     Header: "Epost",
-//     accessor: "epost",
-//   },
-//   {
-//     Header: "Adresse",
-//     accessor: "adresse",
-//   },
-//   {
-//     Header: "Tlf",
-//     accessor: "tlf",
 //   },
 // ];
