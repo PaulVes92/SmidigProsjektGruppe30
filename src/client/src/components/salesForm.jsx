@@ -37,7 +37,7 @@ const SalesForm = () => {
         ></DatePicker>
         <DatePicker
           placeholderText="Fra dato"
-          className="form-control mt-3 ml-3"
+          className="form-control mt-3"
           todayButton="Til dato"
           selected={endDate}
           onChange={(date) => setEndDate(date)}
