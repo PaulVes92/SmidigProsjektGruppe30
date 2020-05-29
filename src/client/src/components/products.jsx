@@ -41,17 +41,19 @@ class Products extends Component {
 
   render() {
     return (
-      <div
-        className="ag-theme-balham"
-        style={{
-          width: 1500,
-          height: 600,
-        }}
-      >
-        <AgGridReact
-          columnDefs={this.state.columnDefs}
-          rowData={this.state.rowData}
-        />
+      <div class="col-md-1">
+        <div
+          className="ag-theme-balham"
+          style={{
+            width: 1410,
+            height: 600,
+          }}
+        >
+          <AgGridReact
+            columnDefs={this.state.columnDefs}
+            rowData={this.state.rowData}
+          />
+        </div>
       </div>
     );
   }
