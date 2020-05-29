@@ -1,22 +1,32 @@
 .App {
-    text-align: center;
-  }
-  
-  html, #root > div{
-    height: 100vh;
-    background-color: #EBE1E1;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  }
-  
-  div{
-    background-color:#EBE1E1;
-  }
-  
-  .nav{
-    background-color:#656472;
-  }
-   
+  text-align: center;
+}
 
-   
+html,
+#root > div {
+  /* height: 100vh; */
+  /* background-color: #ebe1e1; */
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
 
-   
+/* div {
+  background-color: #ebe1e1;
+  z-index: -100;
+} */
+
+.nav {
+  background-color: #656472;
+}
+
+#routes {
+  width: 85%;
+  float: left;
+}
+
+#salesForm {
+  width: 15%;
+}
+
+#fuck {
+  display: flex;
+}

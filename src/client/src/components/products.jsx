@@ -44,7 +44,7 @@ class Products extends Component {
       <div
         className="ag-theme-balham"
         style={{
-          width: 1500,
+          width: 500,
           height: 600,
         }}
       >
