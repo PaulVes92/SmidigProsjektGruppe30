@@ -24,7 +24,7 @@ const SalesForm = () => {
         <label>Telefonnummer</label>
         <input className="form-control mt-2" type="text" placeholder="" />
         <DatePicker
-          placeholderText="Til dato"
+          placeholderText="Fra dato"
           className="form-control mt-3"
           todayButton="Fra dato"
           selected={startDate}
@@ -36,7 +36,7 @@ const SalesForm = () => {
           showMonthDropdown
         ></DatePicker>
         <DatePicker
-          placeholderText="Fra dato"
+          placeholderText="Til dato"
           className="form-control mt-3"
           todayButton="Til dato"
           selected={endDate}
