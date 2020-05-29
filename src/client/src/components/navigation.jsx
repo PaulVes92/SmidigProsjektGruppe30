@@ -7,49 +7,54 @@ export class Navigation extends Component{
     render(){
         return(
             <Nav className="py-0 justify-content-center fixed-top">
-                <NavLink className="mt-3  mr-2 d-inline-block p-4 text-light"
-                    to="/customers" 
-                    activeStyle={{
+                <NavLink className="mt-3  mr-2 d-inline-block p-4 "
+                    to="/customers"
+                        style={{
+                            color:'#ffffff'
+                        }}             
+                        activeStyle={{
                         background: '#EBE1E1',
+                        color:'#34343B',
                         borderTopLeftRadius: '45%',
                         borderTopRightRadius: '45%',
-                        border:'1px solid #656472'
                     }}>Kunder
                     </NavLink>
-                <NavLink className="mt-3 mr-2 d-inline-block p-4 text-light"
+                <NavLink className="mt-3 mr-2 d-inline-block p-4"
                     to="/products"
+                    style={{color:'#ffffff'}}
                     activeStyle={{
                         background: '#EBE1E1',
-                        color: '#656472',
+                        color: '#34343B',
                         borderTopLeftRadius: '45%',
                         borderTopRightRadius: '45%',
-                        border:'1px solid #656472'
                     }}>Produkter</NavLink>    
-                <NavLink className="mt-3 mr-2 d-inline-block p-4 text-light"
+                <NavLink className="mt-3 mr-2 d-inline-block p-4"
                     to="/inventory"
+                    style={{color:'#ffffff'}}
                     activeStyle={{
                         background: '#EBE1E1',
+                        color: '#34343B',
                         borderTopLeftRadius: '45%',
-                        borderTopRightRadius: '45%',
-                        border:'1px solid #656472',
-                        
+                        borderTopRightRadius: '45%'
                     }}>Lagerstatus</NavLink>
-                <NavLink className="mt-3 mr-2 d-inline-block p-4 text-light"
+                <NavLink className="mt-3 mr-2 d-inline-block p-4"
                     to="/reciepts"
+                    style={{color:'#ffffff'}}
                     activeStyle={{
                         background: '#EBE1E1',
+                        color: '#34343B',
                         borderTopLeftRadius: '45%',
-                        borderTopRightRadius: '45%',
-                        border:'1px solid #656472'    
+                        borderTopRightRadius: '45%',   
                     }}
                     >Kvitteringer</NavLink>
-                <NavLink className=".display-2 mt-3 mr-2 d-inline-block p-4 text-light"
+                <NavLink className=".display-2 mt-3 mr-2 d-inline-block p-4"
                     to="/settings"
+                    style={{color:'#ffffff'}}
                     activeStyle={{
                         background: '#EBE1E1',
+                        color: '#34343B',
                         borderTopLeftRadius: '45%',
                         borderTopRightRadius: '45%',
-                        border:'1px solid #656472',
                     }}
                     >Innstillinger</NavLink>
             </Nav>  
