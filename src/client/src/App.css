@@ -4,40 +4,15 @@
 
 html,
 #root > div {
-<<<<<<< HEAD
-  /* height: 100vh; */
-  /* background-color: #ebe1e1; */
-=======
   /* height: 100vh;
   background-color: #ebe1e1; */
->>>>>>> c3636c52158de0bb45eef81b8e1caa4fff4864c4
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
 /* div {
   background-color: #ebe1e1;
-<<<<<<< HEAD
-  z-index: -100;
-=======
->>>>>>> c3636c52158de0bb45eef81b8e1caa4fff4864c4
 } */
 
 .nav {
   background-color: #656472;
 }
-<<<<<<< HEAD
-
-#routes {
-  width: 85%;
-  float: left;
-}
-
-#salesForm {
-  width: 15%;
-}
-
-#fuck {
-  display: flex;
-}
-=======
->>>>>>> c3636c52158de0bb45eef81b8e1caa4fff4864c4

@@ -41,19 +41,6 @@ class Products extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      <div
-        className="ag-theme-balham"
-        style={{
-          width: 500,
-          height: 600,
-        }}
-      >
-        <AgGridReact
-          columnDefs={this.state.columnDefs}
-          rowData={this.state.rowData}
-        />
-=======
       <div class="col-md-1">
         <div
           className="ag-theme-balham"
@@ -67,7 +54,6 @@ class Products extends Component {
             rowData={this.state.rowData}
           />
         </div>
->>>>>>> c3636c52158de0bb45eef81b8e1caa4fff4864c4
       </div>
     );
   }
