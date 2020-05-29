@@ -4,19 +4,28 @@
 
 html,
 #root > div {
+<<<<<<< HEAD
   /* height: 100vh; */
   /* background-color: #ebe1e1; */
+=======
+  /* height: 100vh;
+  background-color: #ebe1e1; */
+>>>>>>> 7dbf0b471487b3a25d36692695a75ec4388e9147
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
 /* div {
   background-color: #ebe1e1;
+<<<<<<< HEAD
   z-index: -100;
+=======
+>>>>>>> 7dbf0b471487b3a25d36692695a75ec4388e9147
 } */
 
 .nav {
   background-color: #656472;
 }
+<<<<<<< HEAD
 
 #routes {
   width: 85%;
@@ -26,3 +35,5 @@ html,
 #salesForm {
   width: 15%;
 }
+=======
+>>>>>>> 7dbf0b471487b3a25d36692695a75ec4388e9147
