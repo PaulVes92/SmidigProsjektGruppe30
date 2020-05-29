@@ -9,6 +9,7 @@ class App extends Component {
     return (
       <div>
         <Customers></Customers>
+        <Products></Products>
       </div>
     );
   }

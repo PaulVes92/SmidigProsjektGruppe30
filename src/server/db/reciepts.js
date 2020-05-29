@@ -5,7 +5,8 @@ const reciepts = new mongoose.Schema({
     type: Number,
   },
   date: {
-    type: Date.now(),
+    type: Date,
+    default: Date.now,
   },
   lastName: {
     type: String,

@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const products = require("./routes/product");
 const customers = require("./routes/customer");
+const reciepts = require("./routes/reciept");
 
 app = express();
 
@@ -18,6 +19,7 @@ app.get("/", (req, res) => {
 //Import routes
 app.use("/products", products);
 app.use("/customers", customers);
+app.use("/reciepts", reciepts);
 
 // app.use(express.static("public"));
 
