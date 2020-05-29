@@ -1,1 +1,22 @@
+.App {
+    text-align: center;
+  }
+  
+  html, #root > div{
+    height: 100vh;
+    background-color: #EBE1E1;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  }
+  
+  div{
+    background-color:#EBE1E1;
+  }
+  
+  .nav{
+    background-color:#656472;
+  }
+   
 
+   
+
+   
