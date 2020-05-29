@@ -5,7 +5,7 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 
-class Costumers extends Component {
+class Customers extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -71,4 +71,4 @@ class Costumers extends Component {
   }
 }
 
-export default Costumers;
+export default Customers;
