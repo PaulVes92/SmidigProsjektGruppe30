@@ -45,7 +45,7 @@ class Navigation extends Component {
             borderTopRightRadius: "45%",
           }}
         >
-          Lagerstatus
+          Aktivt utleie
         </NavLink>
         <NavLink
           className="mt-3 mr-2 d-inline-block p-4"
