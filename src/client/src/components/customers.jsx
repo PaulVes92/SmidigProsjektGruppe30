@@ -12,7 +12,7 @@ class Customers extends Component {
       columnDefs: [
         {
           headerName: "ID",
-          field: "id",
+          field: "customerId",
           sortable: true,
           filter: true,
         },
