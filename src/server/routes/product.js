@@ -21,7 +21,7 @@ router.get("/:id", getProduct, (req, res) => {
 router.post("/", async (req, res) => {
   const product = new Product({
     productId: req.body.productId,
-    name: req.body.name,
+    productName: req.body.productName,
     price: req.body.price,
     comment: req.body.comment,
     category: req.body.category,
@@ -43,8 +43,8 @@ router.patch("/:id", getProduct, async (req, res) => {
     res.product.productId = req.body.productId;
   }
 
-  if (req.body.name != null) {
-    res.product.name = req.body.name;
+  if (req.body.productName != null) {
+    res.product.productName = req.body.productName;
   }
 
   if (req.body.price != null) {
