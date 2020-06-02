@@ -20,7 +20,7 @@ router.get("/:id", getProduct, (req, res) => {
 //Create one product
 router.post("/", async (req, res) => {
   const product = new Product({
-    id: req.body.id,
+    productId: req.body.productId,
     name: req.body.name,
     price: req.body.price,
     comment: req.body.comment,
@@ -39,8 +39,8 @@ router.post("/", async (req, res) => {
 
 //Update one product
 router.patch("/:id", getProduct, async (req, res) => {
-  if (req.body.id != null) {
-    res.product.id = req.body.id;
+  if (req.body.productId != null) {
+    res.product.productId = req.body.productId;
   }
 
   if (req.body.name != null) {
@@ -87,7 +87,7 @@ router.delete("/:id", getProduct, async (req, res) => {
 
 async function getProduct(req, res, next) {
   try {
-    product = await Product.findById(req.params.id);
+    product = await Product.findById(req.params.productId);
     if (product == null) {
       return res.status(404).json({ message: "Cant find product" });
     }
