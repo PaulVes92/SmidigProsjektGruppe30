@@ -23,6 +23,10 @@ const SalesForm = () => {
         <input className="form-control mt-2" type="text" placeholder="" />
         <label>Telefonnummer</label>
         <input className="form-control mt-2" type="text" placeholder="" />
+        <label>Produkt id</label>
+        <input className="form-control mt-1" type="text" placeholder="" />
+        <button className="btn-primary">Add</button>
+        <br />
         <DatePicker
           placeholderText="Fra dato"
           className="form-control mt-3"
