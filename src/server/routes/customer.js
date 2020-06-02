@@ -20,7 +20,7 @@ router.get("/:id", getCustomer, (req, res) => {
 //Create one customer
 router.post("/", async (req, res) => {
   const customer = new Customer({
-    id: req.body.id,
+    customerId: req.body.customerId,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
@@ -38,8 +38,8 @@ router.post("/", async (req, res) => {
 
 //Update one customer
 router.patch("/:id", getCustomer, async (req, res) => {
-  if (req.body.id != null) {
-    res.customer.id = req.body.id;
+  if (req.body.customerId != null) {
+    res.customer.customerId = req.body.customerId;
   }
 
   if (req.body.firstName != null) {
@@ -82,7 +82,7 @@ router.delete("/:id", getCustomer, async (req, res) => {
 
 async function getCustomer(req, res, next) {
   try {
-    customer = await Customer.findById(req.params.id);
+    customer = await Customer.findById(req.params.customerId);
     if (customer == null) {
       return res.status(404).json({ message: "Cant find customer" });
     }
