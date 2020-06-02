@@ -36,7 +36,7 @@ class Navigation extends Component {
         </NavLink>
         <NavLink
           className="mt-3 mr-2 d-inline-block p-4"
-          to="/inventory"
+          to="/rented"
           style={{ color: "#ffffff" }}
           activeStyle={{
             background: "#EBE1E1",
