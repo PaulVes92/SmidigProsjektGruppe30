@@ -46,7 +46,7 @@ class Products extends Component {
 
   render() {
     return (
-      <div class="col-md-1">
+      <div className="col-md-1">
         <div
           className="ag-theme-balham"
           style={{
