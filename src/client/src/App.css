@@ -40,9 +40,9 @@ html,
 }
 
 .field {
-  width: 100%;
   height: 30px;
   border-radius: 4px;
+  min-width: 100%;
   position: relative;
   background-color: rgb(230, 230, 230);
   transition: 0.3s all;
@@ -51,11 +51,17 @@ html,
   margin-left: 10px;
 }
 
+.container2 {
+  height: 100%;
+  width: 100%;
+  padding-top: 15%;
+}
+
 .field2 {
   width: 146.5%;
   height: 30px;
   border-radius: 4px;
-  position: relative;
+  position: absolute;
   background-color: rgb(230, 230, 230);
   transition: 0.3s all;
   border: none;
@@ -85,5 +91,11 @@ form ::placeholder {
   color: rgb(50, 50, 50);
 }
 
-.superContainer {
+.mainTable {
+  height: 1000px;
+  width: 100%;
+  background-color: white;
+  margin: 10px 10px 10px 10px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
 }

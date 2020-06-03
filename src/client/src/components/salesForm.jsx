@@ -53,7 +53,7 @@ class SalesForm extends Component {
   };
   render() {
     return (
-      <div className="container-fluid ml-1 mt-5">
+      <div className="container2">
         <h1 id="regKunde">Registrer ny kunde</h1>
         <form onSubmit={this.handleSubmit}>
           <input
