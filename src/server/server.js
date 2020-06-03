@@ -5,6 +5,7 @@ const cors = require("cors");
 const products = require("./routes/product");
 const customers = require("./routes/customer");
 const reciepts = require("./routes/reciept");
+const rents = require("./routes/rent");
 
 app = express();
 
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 app.use("/products", products);
 app.use("/customers", customers);
 app.use("/reciepts", reciepts);
+app.use("/rents", rents);
 
 // app.use(express.static("public"));
 
