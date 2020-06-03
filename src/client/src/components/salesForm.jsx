@@ -6,7 +6,7 @@ const SalesForm = () => {
   //Datepicker used from https://reactdatepicker.com/
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  //Added so calender dosen't show sundays as an option
+  //Added so calender doesn't show sundays as an option
   const isWeekday = (date) => {
     const day = date.getDay();
     return day !== 0;
@@ -14,18 +14,19 @@ const SalesForm = () => {
 
   return (
     <div className="container-fluid ml-1 mt-5">
+      <h1 id="regKunde">Registrer ny kunde</h1>
       <form>
-        <label>Fornavn</label>
-        <input className="form-control mt-2" type="text" placeholder="" />
-        <label>Etternavn</label>
-        <input className="form-control mt-2" type="text" placeholder="" />
-        <label>Email</label>
-        <input className="form-control mt-2" type="text" placeholder="" />
-        <label>Telefonnummer</label>
-        <input className="form-control mt-2" type="text" placeholder="" />
+        <input className="field" type="text" placeholder="Fornavn" />
+        <input className="field" type="text" placeholder="Etternavn" />
+        <input className="field" type="text" placeholder="Email" />
+        <input className="field" type="text" placeholder="Telefonnummer" />
+        <input className="field" type="text" placeholder="Produkt id" />
+        <button className="btns">Add</button>
+        <br /> <br />
+        <h1 id="regKunde">Leietid</h1>
         <DatePicker
           placeholderText="Fra dato"
-          className="form-control mt-3"
+          className="field2"
           todayButton="Fra dato"
           selected={startDate}
           onChange={(date) => setStartDate(date)}
@@ -37,7 +38,7 @@ const SalesForm = () => {
         ></DatePicker>
         <DatePicker
           placeholderText="Til dato"
-          className="form-control mt-3"
+          className="field2"
           todayButton="Til dato"
           selected={endDate}
           onChange={(date) => setEndDate(date)}
@@ -49,7 +50,7 @@ const SalesForm = () => {
           showMonthDropdown
         ></DatePicker>
         <br></br>
-        <button className="btn btn-primary mt-3">Submit</button>
+        <button className="btns">Submit</button>
       </form>
     </div>
   );

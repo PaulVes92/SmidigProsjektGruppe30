@@ -10,7 +10,12 @@ class Rented extends Component {
     super(props);
     this.state = {
       columnDefs: [
-        { headerName: "Product id", field: "id", sortable: true, filter: true },
+        {
+          headerName: "Product id",
+          field: "productId",
+          sortable: true,
+          filter: true,
+        },
         {
           headerName: "Product name",
           field: "productName",

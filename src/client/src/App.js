@@ -15,7 +15,7 @@ import { renderIntoDocument } from "react-dom/test-utils";
 function App() {
   return (
     <BrowserRouter>
-      <div className="container-fluid p-0 ">
+      <div className="container-fluid p-0">
         <Navigation />
         <div className="row">
           <div className="col-md-2 pt-5">

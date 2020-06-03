@@ -10,8 +10,13 @@ class Products extends Component {
     super(props);
     this.state = {
       columnDefs: [
-        { headerName: "Id", field: "id", sortable: true, filter: true },
-        { headerName: "Name", field: "name", sortable: true, filter: true },
+        { headerName: "Id", field: "productId", sortable: true, filter: true },
+        {
+          headerName: "Name",
+          field: "productName",
+          sortable: true,
+          filter: true,
+        },
         { headerName: "Price", field: "price", sortable: true, filter: true },
         {
           headerName: "Comment",
