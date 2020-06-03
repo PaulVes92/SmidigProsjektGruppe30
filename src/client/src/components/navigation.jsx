@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { Nav } from "react-bootstrap";
+import Logo from "../repairable.png";
 
 class Navigation extends Component {
   render() {
     return (
       <Nav className="py-0 justify-content-center fixed-top">
+        <img src={Logo} alt="Repairable Logo" id="repLogo" />
+        <h1 id="repHeader">Repairable</h1>
         <NavLink
           className="mt-3  mr-2 d-inline-block p-4 "
           to="/customers"
