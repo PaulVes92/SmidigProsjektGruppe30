@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const rent = new mongoose.Schema({
   productId: {
     type: Number,
-    required: true,
   },
   productName: {
     type: String,
