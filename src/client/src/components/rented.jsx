@@ -24,7 +24,7 @@ class Rented extends Component {
         },
         {
           headerName: "Utleid til",
-          field: "firstName",
+          field: "lastName",
           sortable: true,
           filter: true,
         },
@@ -42,7 +42,7 @@ class Rented extends Component {
         },
         {
           headerName: "Utleid dato",
-          field: "retedDate",
+          field: "rentedDate",
           sortable: true,
           filter: true,
         },
@@ -58,7 +58,7 @@ class Rented extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8080/products")
+    fetch("http://localhost:8080/rents")
       .then((res) => res.json())
       .then((rowData) => this.setState({ rowData }))
       .catch((err) => console.log(err));

@@ -1,7 +1,6 @@
 import React, { useState, getDay, Component } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import Axios from "axios";
+import Calendar from "./datePicker";
 
 class SalesForm extends Component {
   constructor(props) {
@@ -14,6 +13,8 @@ class SalesForm extends Component {
       productId: "",
       productName: "",
       price: "",
+      rentedDate: Date,
+      returnDate: Date,
       shoppingCartArray: [],
     };
   }
@@ -78,6 +79,36 @@ class SalesForm extends Component {
       email: this.state.email,
       phoneNumber: this.state.phoneNumber,
     };
+
+    const rntProduct = {
+      productId: this.state.productId,
+      productName: this.state.productName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      phoneNumber: this.state.phoneNumber,
+      rentedDate: this.state.rentedDate,
+      returnDate: this.state.returnDate,
+    };
+
+    Axios.post("http://localhost:8080/rents", rntProduct)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        throw err;
+      });
+
+    this.setState({
+      productId: "",
+      productName: "",
+      price: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      rentedDate: Date,
+      returnDate: Date,
+    });
 
     Axios.post("http://localhost:8080/customers", customers)
       .then((res) => {
@@ -144,7 +175,7 @@ class SalesForm extends Component {
             onChange={this.changeHandler}
           />
           <button className="btns" type="button" onClick={this.getProduct}>
-            Add
+            Legg til
           </button>
           <div>
             {this.state.shoppingCartArray.map((shoppingCartArray, id) => (
@@ -157,34 +188,10 @@ class SalesForm extends Component {
           </div>
           <br /> <br />
           <h1 id="regKunde">Leietid</h1>
-          {/* <DatePicker
-            placeholderText="Fra dato"
-            className="field2"
-            todayButton="Fra dato"
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            selectsStart
-            startDate={startDate}
-            endDate={endDate}
-            filterDate={isWeekday}
-            showMonthDropdown
-          ></DatePicker>
-          <DatePicker
-            placeholderText="Til dato"
-            className="field2"
-            todayButton="Til dato"
-            selected={endDate}
-            onChange={(date) => setEndDate(date)}
-            selectsEnd
-            startDate={startDate}
-            endDate={endDate}
-            minDate={startDate}
-            filterDate={isWeekday}
-            showMonthDropdown
-          ></DatePicker> */}
+          <Calendar className="field2" />
           <br></br>
           <button className="btns" type="submit">
-            Submit
+            Lei ut :)
           </button>
         </form>
       </div>
