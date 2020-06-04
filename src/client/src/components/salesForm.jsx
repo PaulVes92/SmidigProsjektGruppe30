@@ -58,11 +58,6 @@ class SalesForm extends Component {
         const tempShoppingCart = this.state.shoppingCartArray;
         tempShoppingCart.push(newCartItemObject);
 
-<<<<<<< HEAD
- changeHandler = (e) => {
-   this.setState({ [e.target.name]: e.target.value });
- };
-=======
         this.setState({
           shoppingCartArray: tempShoppingCart,
         });
@@ -76,7 +71,6 @@ class SalesForm extends Component {
   changeHandler = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
->>>>>>> 3faec96e3ad057befec202343980422033c0145e
 
   handleSubmit = () => {
     const customers = {
@@ -132,28 +126,21 @@ class SalesForm extends Component {
       phoneNumber: "",
     });
 
-  
-      const leasedProducts = {
-        productId : this.state.productId,
-        productName : this.state.productName,
-        price : this.state.price
-      }
+    const leasedProducts = {
+      productId: this.state.productId,
+      productName: this.state.productName,
+      price: this.state.price,
+    };
 
-
-    Axios.get("http://localhost:8080/products", leasedProducts)
-      .then((res) =>{
-        console.log(res);
-        console.log(res.data);
-      })
+    Axios.get("http://localhost:8080/products", leasedProducts).then((res) => {
+      console.log(res);
+      console.log(res.data);
+    });
     this.setState({
-      pId : this.state.productId
-    })
+      pId: this.state.productId,
+    });
   };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 3faec96e3ad057befec202343980422033c0145e
   render() {
     return (
       <div className="container2">
