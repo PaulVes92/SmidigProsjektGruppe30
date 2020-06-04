@@ -20,7 +20,7 @@ const products = new mongoose.Schema({
     type: String,
   },
   status: {
-    type: Boolean,
+    type: String,
   },
 });
 

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import Logo from "../repairable.png";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 class Navigation extends Component {
   render() {
@@ -66,7 +66,7 @@ class Navigation extends Component {
         </NavLink>
         <NavLink
           className=".display-2 mt-3 mr-2 d-inline-block p-4"
-          to="/settings"
+          to="/addProduct"
           style={{ color: "#ffffff" }}
           activeStyle={{
             background: "#EBE1E1",
@@ -77,7 +77,9 @@ class Navigation extends Component {
         >
           Innstillinger
         </NavLink>
-          <NavLink className="logoutBtn" to="/">Log out</NavLink>
+        <NavLink className="logoutBtn" to="/">
+          Log out
+        </NavLink>
       </Nav>
     );
   }
