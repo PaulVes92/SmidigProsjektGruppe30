@@ -125,6 +125,20 @@ class SalesForm extends Component {
       email: "",
       phoneNumber: "",
     });
+
+    const leasedProducts = {
+      productId: this.state.productId,
+      productName: this.state.productName,
+      price: this.state.price,
+    };
+
+    Axios.get("http://localhost:8080/products", leasedProducts).then((res) => {
+      console.log(res);
+      console.log(res.data);
+    });
+    this.setState({
+      pId: this.state.productId,
+    });
   };
 
   render() {
@@ -188,7 +202,9 @@ class SalesForm extends Component {
           </div>
           <br /> <br />
           <h1 id="regKunde">Leietid</h1>
-          <Calendar className="field2" />
+          <div className="field2">
+          <Calendar />
+          </div>
           <br></br>
           <button className="btns" type="submit">
             Lei ut :)
