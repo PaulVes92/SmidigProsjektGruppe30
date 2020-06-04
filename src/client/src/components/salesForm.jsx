@@ -179,7 +179,6 @@ class SalesForm extends Component {
             onChange={this.changeHandler}
           />
           <br />
-          <br />
           <input
             className="field"
             type="text"
@@ -202,10 +201,7 @@ class SalesForm extends Component {
           </div>
           <br /> <br />
           <h1 id="regKunde">Leietid</h1>
-          <div className="field2">
           <Calendar />
-          </div>
-          <br></br>
           <button className="btns" type="submit">
             Lei ut :)
           </button>

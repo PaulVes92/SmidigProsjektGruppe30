@@ -24,6 +24,7 @@ const Calendar = () => {
         endDate={endDate}
         filterDate={isWeekday}
         showMonthDropdown
+        className="field2"
       ></DatePicker>
       <DatePicker
         dateFormat="dd/MM/yyyy"
@@ -38,6 +39,7 @@ const Calendar = () => {
         minDate={startDate}
         filterDate={isWeekday}
         showMonthDropdown
+        className="field2"
       ></DatePicker>
     </div>
   );
