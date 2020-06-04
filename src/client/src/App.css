@@ -99,3 +99,27 @@ form ::placeholder {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
 }
+
+#loginBtn {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  color: white;
+  background-color: darkgray;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 0px;
+  margin-top: 15px;
+  padding: 0.3% 2%;
+}
+
+#loginBtn:hover {
+  background-color: #656472;
+}
+
+.formInput {
+  width: 200px;
+  height: 30px;
+  margin-top: 15px;
+  margin-right: 10px;
+}
