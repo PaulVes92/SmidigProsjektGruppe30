@@ -38,14 +38,11 @@ router.get("/:id", getRent, (req, res) => {
 //Create one rent
 router.post("/", async (req, res) => {
   const rent = new Rent({
-<<<<<<< HEAD
-=======
     productId: req.body.productId,
     productName: req.body.productName,
     lastName: req.body.lastName,
     email: req.body.email,
     phoneNumber: req.body.phoneNumber,
->>>>>>> a1762cf936281cbd4e33ef85bd27e10a6da7389a
     rentedDate: req.body.rentedDate,
     returnDate: req.body.returnDate,
     customer: req.body.customerId,
