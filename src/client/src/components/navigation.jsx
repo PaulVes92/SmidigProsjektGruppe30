@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import Logo from "../repairable.png";
+import { Link } from 'react-router-dom'
 
 class Navigation extends Component {
   render() {
@@ -76,6 +77,7 @@ class Navigation extends Component {
         >
           Innstillinger
         </NavLink>
+          <NavLink className="logoutBtn" to="/">Log out</NavLink>
       </Nav>
     );
   }

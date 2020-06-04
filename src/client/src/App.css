@@ -57,16 +57,21 @@ html,
   padding-top: 15%;
 }
 
-.field2 {
-  width: 146.5%;
+.react-datepicker-wrapper {
+  width: 100%;
   height: 30px;
   border-radius: 4px;
-  position: absolute;
+  position: relative;
   background-color: rgb(230, 230, 230);
   transition: 0.3s all;
   border: none;
   margin-top: 10px;
   margin-left: 10px;
+  color: rgb(230, 230, 230);
+}
+
+.react-datepicker__input-container {
+  width: inherit;
 }
 
 .field:hover {
@@ -111,6 +116,19 @@ form ::placeholder {
   margin-left: 0px;
   margin-top: 15px;
   padding: 0.3% 2%;
+}
+
+.logoutBtn {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  right: 2%;
+  color: white;
+  background-color: darkgray;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1.5%;
+  padding: 0.2% 1.2%;
 }
 
 #loginBtn:hover {
