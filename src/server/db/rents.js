@@ -1,22 +1,32 @@
 const mongoose = require("mongoose");
 
 const rent = new mongoose.Schema({
+  productId: {
+    type: Number,
+    require: true,
+  },
+  productName: {
+    type: String,
+    require: true,
+  },
+  lastName: {
+    type: String,
+    require: true,
+  },
+  email: {
+    type: String,
+    require: true,
+  },
+  phoneNumber: {
+    type: Number,
+    require: true,
+  },
   rentedDate: {
     type: Date,
     default: Date.now,
   },
   returnDate: {
     type: Date,
-  },
-  customer: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Kunder",
-    required: true,
-  },
-  product: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Produkter",
-    required: true,
   },
 });
 

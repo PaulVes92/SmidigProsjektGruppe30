@@ -5,26 +5,8 @@ const router = express.Router();
 //Get all rents
 router.get("/", async (req, res) => {
   try {
-    const rents = await Rent.find()
-      .select()
-      .populate("product", "productName productId")
-      .populate("customer", "lastName email phoneNumber");
-    res.status(200).json({
-      count: rents.length,
-      rests: rents.map((rent) => {
-        return {
-          _id: rent._id,
-          rentedDate: rent.rentedDate,
-          returnDate: rent.returnDate,
-          customer: rent.customer,
-          product: rent.product,
-          request: {
-            type: "GET",
-            url: "http://localhost:8080/rents/" + rent._id,
-          },
-        };
-      }),
-    });
+    const rent = await Rent.find();
+    res.json(rent);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -45,8 +27,6 @@ router.post("/", async (req, res) => {
     phoneNumber: req.body.phoneNumber,
     rentedDate: req.body.rentedDate,
     returnDate: req.body.returnDate,
-    customer: req.body.customerId,
-    product: req.body.productId,
   });
 
   try {
