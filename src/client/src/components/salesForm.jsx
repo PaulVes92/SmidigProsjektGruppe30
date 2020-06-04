@@ -23,9 +23,9 @@ class SalesForm extends Component {
   //   });
   // };
 
-  changeHandler = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+ changeHandler = (e) => {
+   this.setState({ [e.target.name]: e.target.value });
+ };
 
   handleSubmit = (event) => {
     const customers = {
@@ -50,7 +50,26 @@ class SalesForm extends Component {
       email: "",
       phoneNumber: "",
     });
+
+  
+      const leasedProducts = {
+        productId : this.state.productId,
+        productName : this.state.productName,
+        price : this.state.price
+      }
+
+
+    Axios.get("http://localhost:8080/products", leasedProducts)
+      .then((res) =>{
+        console.log(res);
+        console.log(res.data);
+      })
+    this.setState({
+      pId : this.state.productId
+    })
   };
+
+
   render() {
     return (
       <div className="container-fluid ml-1 mt-5">
