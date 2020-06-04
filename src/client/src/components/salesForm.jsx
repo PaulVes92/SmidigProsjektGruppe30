@@ -72,6 +72,30 @@ class SalesForm extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  submitShoppingCart = () => {
+    for (var i = 0; i < this.state.shoppingCartArray.length; i++) {
+      const rntProduct = {
+        productId: this.state.shoppingCartArray[i].productId,
+        productName: this.state.shoppingCartArray[i].productName,
+        price: this.state.shoppingCartArray[i].price,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        phoneNumber: this.state.phoneNumber,
+        rentedDate: this.state.rentedDate,
+        returnDate: this.state.returnDate,
+      };
+
+      Axios.post("http://localhost:8080/rents", rntProduct)
+        .then((res) => {
+          console.log(res);
+          console.log(res.data);
+        })
+        .catch((err) => {
+          throw err;
+        });
+    }
+  };
+
   handleSubmit = () => {
     const customers = {
       firstName: this.state.firstName,
@@ -79,18 +103,27 @@ class SalesForm extends Component {
       email: this.state.email,
       phoneNumber: this.state.phoneNumber,
     };
+    this.submitShoppingCart();
+    // const rntProduct = {
+    //   productId: this.state.productId,
+    //   productName: this.state.productName,
+    //   lastName: this.state.lastName,
+    //   email: this.state.email,
+    //   phoneNumber: this.state.phoneNumber,
+    //   rentedDate: this.state.rentedDate,
+    //   returnDate: this.state.returnDate,
+    // };
 
-    const rntProduct = {
-      productId: this.state.productId,
-      productName: this.state.productName,
-      lastName: this.state.lastName,
-      email: this.state.email,
-      phoneNumber: this.state.phoneNumber,
-      rentedDate: this.state.rentedDate,
-      returnDate: this.state.returnDate,
-    };
+    // Axios.post("http://localhost:8080/rents", rntProduct)
+    //   .then((res) => {
+    //     console.log(res);
+    //     console.log(res.data);
+    //   })
+    //   .catch((err) => {
+    //     throw err;
+    //   });
 
-    Axios.post("http://localhost:8080/rents", rntProduct)
+    Axios.post("http://localhost:8080/customers", customers)
       .then((res) => {
         console.log(res);
         console.log(res.data);
@@ -108,36 +141,6 @@ class SalesForm extends Component {
       phoneNumber: "",
       rentedDate: Date,
       returnDate: Date,
-    });
-
-    Axios.post("http://localhost:8080/customers", customers)
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        throw err;
-      });
-
-    this.setState({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-    });
-
-    const leasedProducts = {
-      productId: this.state.productId,
-      productName: this.state.productName,
-      price: this.state.price,
-    };
-
-    Axios.get("http://localhost:8080/products", leasedProducts).then((res) => {
-      console.log(res);
-      console.log(res.data);
-    });
-    this.setState({
-      pId: this.state.productId,
     });
   };
 
@@ -206,7 +209,7 @@ class SalesForm extends Component {
           <br /> <br />
           <h1 id="regKunde">Leietid</h1>
           <div className="field2">
-          <Calendar />
+            <Calendar />
           </div>
           <br></br>
           <button className="btns" type="submit">
