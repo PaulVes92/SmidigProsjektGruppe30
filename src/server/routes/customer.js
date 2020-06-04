@@ -20,12 +20,10 @@ router.get("/:id", getCustomer, (req, res) => {
 //Create one customer
 router.post("/", async (req, res) => {
   const customer = new Customer({
-    customerId: req.body.customerId,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
     phoneNumber: req.body.phoneNumber,
-    address: req.body.address,
   });
 
   try {
@@ -38,10 +36,6 @@ router.post("/", async (req, res) => {
 
 //Update one customer
 router.patch("/:id", getCustomer, async (req, res) => {
-  if (req.body.customerId != null) {
-    res.customer.customerId = req.body.customerId;
-  }
-
   if (req.body.firstName != null) {
     res.customer.firstName = req.body.firstName;
   }
@@ -56,10 +50,6 @@ router.patch("/:id", getCustomer, async (req, res) => {
 
   if (req.body.phoneNumber != null) {
     res.customer.phoneNumber = req.body.phoneNumber;
-  }
-
-  if (req.body.address != null) {
-    res.customer.address = req.body.address;
   }
 
   try {

@@ -193,9 +193,12 @@ class SalesForm extends Component {
           <div>
             {this.state.shoppingCartArray.map((shoppingCartArray, id) => (
               <ul key={shoppingCartArray._id}>
-                <li>{shoppingCartArray.productId}</li>
-                <li>{shoppingCartArray.productName}</li>
-                <li>{shoppingCartArray.price}</li>
+                <li>
+                  PRODUKT ID: {shoppingCartArray.productId} <br />
+                  PRODUKT NAVN: {shoppingCartArray.productName} <br />
+                  PRIS: {shoppingCartArray.price}
+                  <br />
+                </li>
               </ul>
             ))}
           </div>

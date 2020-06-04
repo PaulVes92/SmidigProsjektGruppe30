@@ -5,8 +5,8 @@ const router = express.Router();
 //Get all rents
 router.get("/", async (req, res) => {
   try {
-    const rents = await Rent.find();
-    res.json(rents);
+    const rent = await Rent.find();
+    res.json(rent);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -85,6 +85,7 @@ router.delete("/:id", getRent, async (req, res) => {
   }
 });
 
+//Function for geting all from db by id
 async function getRent(req, res, next) {
   try {
     rent = await Rent.findById(req.params.id);

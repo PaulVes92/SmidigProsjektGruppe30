@@ -24,4 +24,4 @@ const products = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("produkter", products);
+module.exports = mongoose.model("Produkter", products);
