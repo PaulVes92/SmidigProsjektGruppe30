@@ -11,23 +11,73 @@ class SalesForm extends Component {
       lastName: "",
       email: "",
       phoneNumber: "",
+      productId: "",
+      productName: "",
+      price: "",
+      shoppingCartArray: [],
     };
   }
 
-  // handleChange = (event) => {
-  //   this.setState({
-  //     firstName: event.target.value,
-  //     lastName: event.target.value,
-  //     email: event.target.value,
-  //     phoneNumber: event.target.value,
-  //   });
-  // };
+  getProduct = () => {
+    console.log(this.state);
+    Axios.get("http://localhost:8080/products")
+      .then((res) => {
+        console.log(res);
+        //console.log(res.data);
+        const shoppingCart = res.data;
+        console.log(shoppingCart);
+        this.filterProducts(shoppingCart);
+      })
+      .catch((err) => {
+        throw err;
+      });
+  };
 
+  filterProducts(shoppingCart) {
+    for (var i = 0; i < shoppingCart.length; i++) {
+      if (shoppingCart[i].productId == this.state.productId) {
+        this.setState({
+          productId: shoppingCart[i].productId,
+          productName: shoppingCart[i].productName,
+          price: shoppingCart[i].price,
+        });
+
+        console.log(this.state.productId);
+        console.log(this.state.productName);
+        console.log(this.state.price);
+
+        const newCartItemObject = {
+          productId: this.state.productId,
+          productName: this.state.productName,
+          price: this.state.price,
+        };
+
+        console.log(newCartItemObject);
+
+        const tempShoppingCart = this.state.shoppingCartArray;
+        tempShoppingCart.push(newCartItemObject);
+
+<<<<<<< HEAD
  changeHandler = (e) => {
    this.setState({ [e.target.name]: e.target.value });
  };
+=======
+        this.setState({
+          shoppingCartArray: tempShoppingCart,
+        });
 
-  handleSubmit = (event) => {
+        console.log(this.state.shoppingCartArray);
+        return shoppingCart[i];
+      }
+    }
+  }
+
+  changeHandler = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+>>>>>>> 3faec96e3ad057befec202343980422033c0145e
+
+  handleSubmit = () => {
     const customers = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
@@ -69,10 +119,13 @@ class SalesForm extends Component {
     })
   };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3faec96e3ad057befec202343980422033c0145e
   render() {
     return (
-      <div className="container-fluid ml-1 mt-5">
+      <div className="container2">
         <h1 id="regKunde">Registrer ny kunde</h1>
         <form onSubmit={this.handleSubmit}>
           <input
@@ -107,10 +160,28 @@ class SalesForm extends Component {
             value={this.phoneNumber}
             onChange={this.changeHandler}
           />
-          <input className="field" type="text" placeholder="Produkt id" />
-          <button className="btns" type="submit">
+          <br />
+          <br />
+          <input
+            className="field"
+            type="text"
+            placeholder="Produkt id"
+            name="productId"
+            value={this.productId}
+            onChange={this.changeHandler}
+          />
+          <button className="btns" type="button" onClick={this.getProduct}>
             Add
           </button>
+          <div>
+            {this.state.shoppingCartArray.map((shoppingCartArray, id) => (
+              <ul key={shoppingCartArray._id}>
+                <li>{shoppingCartArray.productId}</li>
+                <li>{shoppingCartArray.productName}</li>
+                <li>{shoppingCartArray.price}</li>
+              </ul>
+            ))}
+          </div>
           <br /> <br />
           <h1 id="regKunde">Leietid</h1>
           {/* <DatePicker
@@ -139,7 +210,9 @@ class SalesForm extends Component {
             showMonthDropdown
           ></DatePicker> */}
           <br></br>
-          <button className="btns">Submit</button>
+          <button className="btns" type="submit">
+            Submit
+          </button>
         </form>
       </div>
     );
