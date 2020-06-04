@@ -1,7 +1,6 @@
 import React, { useState, getDay, Component } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import Axios from "axios";
+import Calendar from "./datePicker";
 
 class SalesForm extends Component {
   constructor(props) {
@@ -11,29 +10,105 @@ class SalesForm extends Component {
       lastName: "",
       email: "",
       phoneNumber: "",
+      productId: "",
+      productName: "",
+      price: "",
+      rentedDate: Date,
+      returnDate: Date,
+      shoppingCartArray: [],
     };
   }
 
-  // handleChange = (event) => {
-  //   this.setState({
-  //     firstName: event.target.value,
-  //     lastName: event.target.value,
-  //     email: event.target.value,
-  //     phoneNumber: event.target.value,
-  //   });
-  // };
-
-  changeHandler = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+  getProduct = () => {
+    console.log(this.state);
+    Axios.get("http://localhost:8080/products")
+      .then((res) => {
+        console.log(res);
+        //console.log(res.data);
+        const shoppingCart = res.data;
+        console.log(shoppingCart);
+        this.filterProducts(shoppingCart);
+      })
+      .catch((err) => {
+        throw err;
+      });
   };
 
-  handleSubmit = (event) => {
+  filterProducts(shoppingCart) {
+    for (var i = 0; i < shoppingCart.length; i++) {
+      if (shoppingCart[i].productId == this.state.productId) {
+        this.setState({
+          productId: shoppingCart[i].productId,
+          productName: shoppingCart[i].productName,
+          price: shoppingCart[i].price,
+        });
+
+        console.log(this.state.productId);
+        console.log(this.state.productName);
+        console.log(this.state.price);
+
+        const newCartItemObject = {
+          productId: this.state.productId,
+          productName: this.state.productName,
+          price: this.state.price,
+        };
+
+        console.log(newCartItemObject);
+
+        const tempShoppingCart = this.state.shoppingCartArray;
+        tempShoppingCart.push(newCartItemObject);
+
+        this.setState({
+          shoppingCartArray: tempShoppingCart,
+        });
+
+        console.log(this.state.shoppingCartArray);
+        return shoppingCart[i];
+      }
+    }
+  }
+
+  changeHandler = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleSubmit = () => {
     const customers = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
       phoneNumber: this.state.phoneNumber,
     };
+
+    const rntProduct = {
+      productId: this.state.productId,
+      productName: this.state.productName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      phoneNumber: this.state.phoneNumber,
+      rentedDate: this.state.rentedDate,
+      returnDate: this.state.returnDate,
+    };
+
+    Axios.post("http://localhost:8080/rents", rntProduct)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        throw err;
+      });
+
+    this.setState({
+      productId: "",
+      productName: "",
+      price: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      rentedDate: Date,
+      returnDate: Date,
+    });
 
     Axios.post("http://localhost:8080/customers", customers)
       .then((res) => {
@@ -54,7 +129,7 @@ class SalesForm extends Component {
 
   render() {
     return (
-      <div className="container-fluid ml-1 mt-5">
+      <div className="container2">
         <h1 id="regKunde">Registrer ny kunde</h1>
         <form onSubmit={this.handleSubmit}>
           <input
@@ -89,39 +164,35 @@ class SalesForm extends Component {
             value={this.phoneNumber}
             onChange={this.changeHandler}
           />
-          <input className="field" type="text" placeholder="Produkt id" />
-          <button className="btns" type="submit">
-            Add
+          <br />
+          <br />
+          <input
+            className="field"
+            type="text"
+            placeholder="Produkt id"
+            name="productId"
+            value={this.productId}
+            onChange={this.changeHandler}
+          />
+          <button className="btns" type="button" onClick={this.getProduct}>
+            Legg til
           </button>
+          <div>
+            {this.state.shoppingCartArray.map((shoppingCartArray, id) => (
+              <ul key={shoppingCartArray._id}>
+                <li>{shoppingCartArray.productId}</li>
+                <li>{shoppingCartArray.productName}</li>
+                <li>{shoppingCartArray.price}</li>
+              </ul>
+            ))}
+          </div>
           <br /> <br />
           <h1 id="regKunde">Leietid</h1>
-          {/* <DatePicker
-            placeholderText="Fra dato"
-            className="field2"
-            todayButton="Fra dato"
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            selectsStart
-            startDate={startDate}
-            endDate={endDate}
-            filterDate={isWeekday}
-            showMonthDropdown
-          ></DatePicker>
-          <DatePicker
-            placeholderText="Til dato"
-            className="field2"
-            todayButton="Til dato"
-            selected={endDate}
-            onChange={(date) => setEndDate(date)}
-            selectsEnd
-            startDate={startDate}
-            endDate={endDate}
-            minDate={startDate}
-            filterDate={isWeekday}
-            showMonthDropdown
-          ></DatePicker> */}
+          <Calendar className="field2" />
           <br></br>
-          <button className="btns">Submit</button>
+          <button className="btns" type="submit">
+            Lei ut :)
+          </button>
         </form>
       </div>
     );

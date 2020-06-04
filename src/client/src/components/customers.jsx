@@ -28,7 +28,10 @@ class Customers extends Component {
           sortable: true,
           filter: true,
         },
-        { headerName: "Epost", field: "email", sortable: true, filter: true },
+        { headerName: "Epost",
+          field: "email",
+          sortable: true,
+          filter: true },
         {
           headerName: "Adresse",
           field: "address",
@@ -55,18 +58,20 @@ class Customers extends Component {
 
   render() {
     return (
-      <div
-        className="ag-theme-balham"
-        style={{
-          width: 1410,
-          height: 600,
-        }}
-      >
-        <AgGridReact
-          columnDefs={this.state.columnDefs}
-          rowData={this.state.rowData}
-        />
-      </div>
+        <div className="col-md-1">
+          <div
+              className="ag-theme-balham"
+              style={{
+                width: 1410,
+                height: 600,
+              }}
+          >
+            <AgGridReact
+                columnDefs={this.state.columnDefs}
+                rowData={this.state.rowData}
+            />
+          </div>
+        </div>
     );
   }
 }
