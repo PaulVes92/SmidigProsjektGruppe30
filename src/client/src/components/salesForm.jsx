@@ -207,14 +207,10 @@ class SalesForm extends Component {
           </div>
           <br /> <br />
           <h1 id="regKunde">Leietid</h1>
-<<<<<<< HEAD
-          <Calendar />
-=======
           <div className="field2">
             <Calendar />
           </div>
           <br></br>
->>>>>>> peter
           <button className="btns" type="submit">
             Lei ut :)
           </button>
