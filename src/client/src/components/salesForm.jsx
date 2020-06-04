@@ -14,6 +14,7 @@ class SalesForm extends Component {
       productId: "",
       productName: "",
       price: "",
+      shoppingCartArray: [],
     };
   }
 
@@ -33,21 +34,34 @@ class SalesForm extends Component {
   };
 
   filterProducts(shoppingCart) {
-    console.log("filter ran");
-    console.log(shoppingCart);
-    console.log(this.state.productId);
-    console.log(shoppingCart[4].productId);
     for (var i = 0; i < shoppingCart.length; i++) {
       if (shoppingCart[i].productId == this.state.productId) {
-        console.log(shoppingCart[i]);
         this.setState({
           productId: shoppingCart[i].productId,
           productName: shoppingCart[i].productName,
           price: shoppingCart[i].price,
         });
+
         console.log(this.state.productId);
         console.log(this.state.productName);
         console.log(this.state.price);
+
+        const newCartItemObject = {
+          productId: this.state.productId,
+          productName: this.state.productName,
+          price: this.state.price,
+        };
+
+        console.log(newCartItemObject);
+
+        const tempShoppingCart = this.state.shoppingCartArray;
+        tempShoppingCart.push(newCartItemObject);
+
+        this.setState({
+          shoppingCartArray: tempShoppingCart,
+        });
+
+        console.log(this.state.shoppingCartArray);
         return shoppingCart[i];
       }
     }
@@ -81,6 +95,7 @@ class SalesForm extends Component {
       phoneNumber: "",
     });
   };
+
   render() {
     return (
       <div className="container2">
@@ -132,9 +147,13 @@ class SalesForm extends Component {
             Add
           </button>
           <div>
-            <p>{this.state.productId}</p>
-            <p>{this.state.productName}</p>
-            <p>{this.state.price}</p>
+            {this.state.shoppingCartArray.map((shoppingCartArray, id) => (
+              <ul key={shoppingCartArray._id}>
+                <li>{shoppingCartArray.productId}</li>
+                <li>{shoppingCartArray.productName}</li>
+                <li>{shoppingCartArray.price}</li>
+              </ul>
+            ))}
           </div>
           <br /> <br />
           <h1 id="regKunde">Leietid</h1>
