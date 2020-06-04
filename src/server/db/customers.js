@@ -1,9 +1,6 @@
 const mongoose = require("mongoose");
 
 const customers = new mongoose.Schema({
-  customerId: {
-    type: Number,
-  },
   firstName: {
     type: String,
   },
@@ -15,9 +12,6 @@ const customers = new mongoose.Schema({
   },
   phoneNumber: {
     type: Number,
-  },
-  address: {
-    type: String,
   },
 });
 
