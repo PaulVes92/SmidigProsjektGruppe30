@@ -51,6 +51,7 @@ class SalesForm extends Component {
       phoneNumber: "",
     });
   };
+
   render() {
     return (
       <div className="container-fluid ml-1 mt-5">

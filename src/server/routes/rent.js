@@ -5,8 +5,26 @@ const router = express.Router();
 //Get all rents
 router.get("/", async (req, res) => {
   try {
-    const rents = await Rent.find();
-    res.json(rents);
+    const rents = await Rent.find()
+      .select()
+      .populate("product", "productName productId")
+      .populate("customer", "lastName email phoneNumber");
+    res.status(200).json({
+      count: rents.length,
+      rests: rents.map((rent) => {
+        return {
+          _id: rent._id,
+          rentedDate: rent.rentedDate,
+          returnDate: rent.returnDate,
+          customer: rent.customer,
+          product: rent.product,
+          request: {
+            type: "GET",
+            url: "http://localhost:8080/rents/" + rent._id,
+          },
+        };
+      }),
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -22,6 +40,8 @@ router.post("/", async (req, res) => {
   const rent = new Rent({
     rentedDate: req.body.rentedDate,
     returnDate: req.body.returnDate,
+    customer: req.body.customerId,
+    product: req.body.productId,
   });
 
   try {
@@ -80,6 +100,7 @@ router.delete("/:id", getRent, async (req, res) => {
   }
 });
 
+//Function for geting all from db by id
 async function getRent(req, res, next) {
   try {
     rent = await Rent.findById(req.params.id);
