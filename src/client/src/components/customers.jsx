@@ -58,14 +58,20 @@ class Customers extends Component {
 
   render() {
     return (
-      <div
-        className="mainTable"
-      >
-        <AgGridReact
-          columnDefs={this.state.columnDefs}
-          rowData={this.state.rowData}
-        />
-      </div>
+        <div className="col-md-1">
+          <div
+              className="ag-theme-balham"
+              style={{
+                width: 1410,
+                height: 600,
+              }}
+          >
+            <AgGridReact
+                columnDefs={this.state.columnDefs}
+                rowData={this.state.rowData}
+            />
+          </div>
+        </div>
     );
   }
 }
