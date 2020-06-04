@@ -20,7 +20,7 @@ router.get("/:id", getRent, (req, res) => {
 //Create one rent
 router.post("/", async (req, res) => {
   const rent = new Rent({
-    productid: req.body.productid,
+    productId: req.body.productId,
     productName: req.body.productName,
     lastName: req.body.lastName,
     email: req.body.email,
