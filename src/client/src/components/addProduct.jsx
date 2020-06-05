@@ -75,7 +75,7 @@ class AddProduct extends Component {
             alert("Slettet produkt!");
           })
           .catch((err) => {
-            alert("Det er ingen produkt med denne ID'en");
+            alert("Det er ingen produkter med denne ID'en");
             throw err;
           });
       }
