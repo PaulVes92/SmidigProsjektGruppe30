@@ -12,7 +12,7 @@ const Calendar = () => {
   };
   return (
     <div>
-      <DatePicker
+      <DatePicker className="ml-2 mb-1 rounded border-0"
         dateFormat="dd/MM/yyyy"
         locale={no}
         placeholderText="Fra dato"
@@ -25,7 +25,7 @@ const Calendar = () => {
         filterDate={isWeekday}
         showMonthDropdown
       ></DatePicker>
-      <DatePicker
+      <DatePicker className="ml-2 bg-light rounded border-0"
         dateFormat="dd/MM/yyyy"
         locale={no}
         placeholderText="Til dato"
