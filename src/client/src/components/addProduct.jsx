@@ -12,9 +12,27 @@ class AddProduct extends Component {
     status: "",
     phoneNumber: "",
     customerData: [],
+    customerId: "",
+    id: "",
   };
 
-  getCustomers = () => {
+  // getCustomers = () => {
+  //   console.log(this.state);
+  //   axios
+  //     .get("http://localhost:8080/customers/")
+  //     .then((res) => {
+  //       console.log(res);
+  //       console.log(res.data);
+  //       this.setState({
+  //         customerData: res.data,
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       throw err;
+  //     });
+  // };
+
+  componentDidMount = () => {
     console.log(this.state);
     axios
       .get("http://localhost:8080/customers/")
@@ -31,10 +49,31 @@ class AddProduct extends Component {
   };
 
   deleteCustomer = () => {
+    console.log(this.state.customerData);
     for (var i = 0; i < this.state.customerData.length; i++) {
+      console.log("this.state.customerData[i].phoneNumber");
+      console.log(this.state.customerData[i].phoneNumber);
       if (this.state.customerData[i].phoneNumber == this.state.phoneNumber) {
         console.log("deleted customer");
         console.log(i);
+
+        console.log(this.state.customerData);
+        const customerId = this.state.customerData[i]._id;
+        console.log(customerId);
+        console.log(this.state.id);
+        // concat();
+
+        axios
+          .delete(`http://localhost:8080/customers/${customerId}`)
+          .then((res) => {
+            console.log(res);
+            console.log(res.data);
+            alert("Kunde slettet!");
+          })
+          .catch((err) => {
+            alert("Ingen kunder med dette nummeret");
+            throw err;
+          });
       }
     }
   };
@@ -137,15 +176,12 @@ class AddProduct extends Component {
           <input
             type="text"
             placeholder="Kundens tlfnr"
-            name="customerTlf"
-            value={this.customerTlf}
+            name="phoneNumber"
+            value={this.phoneNumber}
             onChange={this.changeHandler}
           />
 
-          <button
-            type="button"
-            onClick={this.deleteCustomer(this.state.customerData)}
-          >
+          <button type="button" onClick={this.deleteCustomer}>
             Slett Kunde
           </button>
         </form>
