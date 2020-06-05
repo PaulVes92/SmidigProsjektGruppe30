@@ -13,6 +13,7 @@ import AddProduct from "./components/addProduct";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { renderIntoDocument } from "react-dom/test-utils";
+import Deliveries from "./components/delivery";
 
 // submit --> start function App()
 
@@ -31,6 +32,7 @@ function App() {
               <Route exact path="/customers" component={Customers} />
               <Route exact path="/products" component={Products} />
               <Route exact path="/reciepts" component={Reciepts} />
+              <Route exact path="/delivery" component={Deliveries} />
               <Route exact path="/rented" component={Rented} />
               <Route exact path="/addProduct" component={AddProduct} />
             </Switch>
