@@ -75,7 +75,7 @@ router.patch("/:id", getProduct, async (req, res) => {
   }
 });
 
-//Delete one product
+// Delete one product
 router.delete("/:id", getProduct, async (req, res) => {
   try {
     await res.product.remove();
