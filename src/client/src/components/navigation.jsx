@@ -89,7 +89,7 @@ class Navigation extends Component {
             borderTopRightRadius: "45%",
           }}
         >
-          Innstillinger
+          Admin
         </NavLink>
         <NavLink className="logoutBtn" to="/">
           Log out
