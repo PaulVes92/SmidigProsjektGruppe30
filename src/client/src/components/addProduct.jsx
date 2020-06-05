@@ -17,7 +17,6 @@ class AddProduct extends Component {
   };
 
   handleSubmit = () => {
-    console.log(this.state.comment);
     const products = {
       productId: this.state.productId,
       productName: this.state.productName,
