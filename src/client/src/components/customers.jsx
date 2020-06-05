@@ -63,9 +63,6 @@ class Customers extends Component {
             height: 600,
           }}
         >
-          <button className="btn-danger" onClick={this.deleteCustomer}>
-            X
-          </button>
           <AgGridReact
             key={this.state.id}
             columnDefs={this.state.columnDefs}
