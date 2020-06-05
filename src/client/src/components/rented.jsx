@@ -23,6 +23,12 @@ class Rented extends Component {
           filter: true,
         },
         {
+          headerName: "Størrelse",
+          field: "size",
+          sortable: true,
+          filter: true,
+        },
+        {
           headerName: "Utleid til",
           field: "lastName",
           sortable: true,
