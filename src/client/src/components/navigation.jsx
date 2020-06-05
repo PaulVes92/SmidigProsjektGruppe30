@@ -65,15 +65,15 @@ class Navigation extends Component {
           Kvitteringer
         </NavLink>
         <NavLink
-        className="mt-3 mr-2 d-inline-block p-4"
-        to="/delivery"
-        style={{ color: "#ffffff" }}
-        activeStyle={{
-          background: "#EBE1E1",
-          color: "#34343B",
-          borderTopLeftRadius: "45%",
-          borderTopRightRadius: "45%",
-        }}
+          className="mt-3 mr-2 d-inline-block p-4"
+          to="/delivery"
+          style={{ color: "#ffffff" }}
+          activeStyle={{
+            background: "#EBE1E1",
+            color: "#34343B",
+            borderTopLeftRadius: "45%",
+            borderTopRightRadius: "45%",
+          }}
       >
         Innlevering
       </NavLink>

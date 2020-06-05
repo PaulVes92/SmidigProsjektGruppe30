@@ -222,7 +222,7 @@ class SalesForm extends Component {
           <div>
             {this.state.shoppingCartArray.map((shoppingCartArray, id) => (
               <ul key={shoppingCartArray._id}>
-                <li>
+                <li id="cartItems">
                   PRODUKT ID: {shoppingCartArray.productId} <br />
                   PRODUKT NAVN: {shoppingCartArray.productName} <br />
                   PRIS: {shoppingCartArray.price} kr <br />
@@ -231,12 +231,13 @@ class SalesForm extends Component {
                 </li>
               </ul>
             ))}
-            <h3>Totalpris: {this.state.total} kr</h3>
+            <h3 id="priceTotal">Totalpris: {this.state.total} kr</h3>
           </div>
           <br /> <br />
-          <h1 id="regKunde">Leietid</h1>
+          <h1 id="timeperiod">Leieperiode</h1>
           <input
             className="ml-3"
+            id="inputDate"
             type="date"
             value={this.rentedDate}
             name="rentedDate"
@@ -244,6 +245,7 @@ class SalesForm extends Component {
           />
           <input
             className="ml-3"
+            id="inputDate"
             type="date"
             value={this.returnDate}
             name="returnDate"
@@ -254,7 +256,7 @@ class SalesForm extends Component {
           </div> */}
           <br></br>
           <button className="btns" type="submit">
-            Lei ut :)
+            Gjennomfør utleie
           </button>
         </form>
       </div>
