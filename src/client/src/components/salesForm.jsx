@@ -236,7 +236,7 @@ class SalesForm extends Component {
           <br /> <br />
           <h1 id="timeperiod">Leieperiode</h1>
           <input
-            className="ml-3"
+            className=""
             id="inputDate"
             type="date"
             value={this.rentedDate}
@@ -244,7 +244,7 @@ class SalesForm extends Component {
             onChange={this.changeHandler}
           />
           <input
-            className="ml-3"
+            className=""
             id="inputDate"
             type="date"
             value={this.returnDate}
