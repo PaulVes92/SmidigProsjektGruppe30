@@ -21,6 +21,12 @@ const rent = new mongoose.Schema({
     type: Number,
     require: true,
   },
+  size: {
+    type: String,
+  },
+  comments: {
+    type: String,
+  },
   rentedDate: {
     type: Date,
     default: Date.now,
