@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import axios from "axios";
+import "bootstrap/dist/css/bootstrap.css";
 import { AgGridReact } from "ag-grid-react";
 
 import "ag-grid-community/dist/styles/ag-grid.css";
@@ -9,13 +10,8 @@ class Customers extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      rowSelection: "single",
       columnDefs: [
-        {
-          headerName: "ID",
-          field: "customerId",
-          sortable: true,
-          filter: true,
-        },
         {
           headerName: "Etternavn",
           field: "lastName",
@@ -28,16 +24,7 @@ class Customers extends Component {
           sortable: true,
           filter: true,
         },
-        { headerName: "Epost",
-          field: "email",
-          sortable: true,
-          filter: true },
-        {
-          headerName: "Adresse",
-          field: "address",
-          sortable: true,
-          filter: true,
-        },
+        { headerName: "Epost", field: "email", sortable: true, filter: true },
         {
           headerName: "Tlf",
           field: "phoneNumber",
@@ -56,22 +43,37 @@ class Customers extends Component {
       .catch((err) => console.log(err));
   }
 
+  // deleteCustomer = () => {
+  //   const selectedRows = this.gridOptions.selectedNodes();
+  //   if (!selectedRows || selectedRows.length == 0) {
+  //     return;
+  //   }
+  //   const selectedRow = selectedRows[0];
+  //   window.rowDataserverside.splice(selectedRow.rowIndex, 1);
+  //   this.purgeServerSideCache();
+  // };
+
   render() {
     return (
-        <div className="col-md-1">
-          <div
-              className="ag-theme-balham"
-              style={{
-                width: 1410,
-                height: 600,
-              }}
-          >
-            <AgGridReact
-                columnDefs={this.state.columnDefs}
-                rowData={this.state.rowData}
-            />
-          </div>
+      <div className="col-md-1">
+        <div
+          className="ag-theme-balham"
+          style={{
+            width: 1410,
+            height: 600,
+          }}
+        >
+          <button className="btn-danger" onClick={this.deleteCustomer}>
+            X
+          </button>
+          <AgGridReact
+            key={this.state.id}
+            columnDefs={this.state.columnDefs}
+            rowData={this.state.rowData}
+            rowSelection={this.state.rowSelection}
+          />
         </div>
+      </div>
     );
   }
 }

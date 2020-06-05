@@ -20,8 +20,8 @@ const products = new mongoose.Schema({
     type: String,
   },
   status: {
-    type: Boolean,
+    type: String,
   },
 });
 
-module.exports = mongoose.model("produkter", products);
+module.exports = mongoose.model("Produkter", products);
