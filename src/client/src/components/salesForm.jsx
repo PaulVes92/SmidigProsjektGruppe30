@@ -13,6 +13,7 @@ class SalesForm extends Component {
       productId: "",
       productName: "",
       price: "",
+      size: "",
       rentedDate: new Date(""),
       returnDate: new Date(""),
       shoppingCartArray: [],
@@ -45,6 +46,7 @@ class SalesForm extends Component {
           productId: shoppingCart[i].productId,
           productName: shoppingCart[i].productName,
           price: shoppingCart[i].price,
+          size: shoppingCart[i].size,
         });
 
         // console.log(this.state.productId);
@@ -55,6 +57,7 @@ class SalesForm extends Component {
           productId: this.state.productId,
           productName: this.state.productName,
           price: this.state.price,
+          size: this.state.size,
         };
 
         // console.log(newCartItemObject);
@@ -100,6 +103,7 @@ class SalesForm extends Component {
         productId: this.state.shoppingCartArray[i].productId,
         productName: this.state.shoppingCartArray[i].productName,
         price: this.state.shoppingCartArray[i].price,
+        size: this.state.shoppingCartArray[i].size,
         lastName: this.state.lastName,
         email: this.state.email,
         phoneNumber: this.state.phoneNumber,
@@ -221,7 +225,8 @@ class SalesForm extends Component {
                 <li>
                   PRODUKT ID: {shoppingCartArray.productId} <br />
                   PRODUKT NAVN: {shoppingCartArray.productName} <br />
-                  PRIS: {shoppingCartArray.price} kr
+                  PRIS: {shoppingCartArray.price} kr <br />
+                  STR: {shoppingCartArray.size}
                   <br />
                 </li>
               </ul>
