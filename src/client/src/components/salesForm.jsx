@@ -1,6 +1,7 @@
 import React, { useState, getDay, Component } from "react";
 import Axios from "axios";
 import Calendar from "./datePicker";
+import "bootstrap/dist/css/bootstrap.css";
 
 class SalesForm extends Component {
   constructor(props) {
@@ -13,8 +14,8 @@ class SalesForm extends Component {
       productId: "",
       productName: "",
       price: "",
-      rentedDate: Date,
-      returnDate: Date,
+      rentedDate: new Date(""),
+      returnDate: new Date(""),
       shoppingCartArray: [],
     };
   }
@@ -139,8 +140,8 @@ class SalesForm extends Component {
       lastName: "",
       email: "",
       phoneNumber: "",
-      rentedDate: Date,
-      returnDate: Date,
+      rentedDate: new Date(),
+      returnDate: new Date(),
     });
   };
 
@@ -207,9 +208,23 @@ class SalesForm extends Component {
           </div>
           <br /> <br />
           <h1 id="regKunde">Leietid</h1>
-          <div className="field2">
-            <Calendar />
-          </div>
+          <input
+            className="ml-3"
+            type="date"
+            value={this.rentedDate}
+            name="rentedDate"
+            onChange={this.changeHandler}
+          />
+          <input
+            className="ml-3"
+            type="date"
+            value={this.returnDate}
+            name="returnDate"
+            onChange={this.changeHandler}
+          />
+          {/* <div className="field2">
+            <Calendar value={this.state.returnDate} />
+          </div> */}
           <br></br>
           <button className="btns" type="submit">
             Lei ut :)
