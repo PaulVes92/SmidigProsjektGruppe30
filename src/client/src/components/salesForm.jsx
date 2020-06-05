@@ -1,6 +1,5 @@
 import React, { useState, getDay, Component } from "react";
 import Axios from "axios";
-import Calendar from "./datePicker";
 import "bootstrap/dist/css/bootstrap.css";
 
 class SalesForm extends Component {
