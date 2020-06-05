@@ -10,6 +10,33 @@ class AddProduct extends Component {
     category: "",
     size: "",
     status: "",
+    phoneNumber: "",
+    customerData: [],
+  };
+
+  getCustomers = () => {
+    console.log(this.state);
+    axios
+      .get("http://localhost:8080/customers/")
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        this.setState({
+          customerData: res.data,
+        });
+      })
+      .catch((err) => {
+        throw err;
+      });
+  };
+
+  deleteCustomer = () => {
+    for (var i = 0; i < this.state.customerData.length; i++) {
+      if (this.state.customerData[i].phoneNumber == this.state.phoneNumber) {
+        console.log("deleted customer");
+        console.log(i);
+      }
+    }
   };
 
   changeHandler = (event) => {
@@ -103,6 +130,24 @@ class AddProduct extends Component {
           </select>
 
           <button type="submit">Legg til produkt</button>
+        </form>
+
+        <h2>Slett kunde</h2>
+        <form>
+          <input
+            type="text"
+            placeholder="Kundens tlfnr"
+            name="customerTlf"
+            value={this.customerTlf}
+            onChange={this.changeHandler}
+          />
+
+          <button
+            type="button"
+            onClick={this.deleteCustomer(this.state.customerData)}
+          >
+            Slett Kunde
+          </button>
         </form>
       </div>
     );
