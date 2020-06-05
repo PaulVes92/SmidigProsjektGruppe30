@@ -46,6 +46,40 @@ class AddProduct extends Component {
       .catch((err) => {
         throw err;
       });
+
+    axios
+      .get("http://localhost:8080/products/")
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        this.setState({
+          productData: res.data,
+        });
+      })
+      .catch((err) => {
+        throw err;
+      });
+  };
+
+  deleteProduct = () => {
+    console.log(this.state.productData);
+    for (var i = 0; i < this.state.productData.length; i++) {
+      if (this.state.productData[i].productId == this.state.productId) {
+        const productId = this.state.productData[i]._id;
+
+        axios
+          .delete(`http://localhost:8080/products/${productId}`)
+          .then((res) => {
+            console.log(res);
+            console.log(res.data);
+            alert("Slettet produkt!");
+          })
+          .catch((err) => {
+            alert("Det er ingen produkt med denne ID'en");
+            throw err;
+          });
+      }
+    }
   };
 
   deleteCustomer = () => {
@@ -183,6 +217,20 @@ class AddProduct extends Component {
 
           <button type="button" onClick={this.deleteCustomer}>
             Slett Kunde
+          </button>
+        </form>
+        <h2>Slett produkt</h2>
+        <form>
+          <input
+            type="text"
+            placeholder="Produkt ID"
+            name="productId"
+            value={this.productId}
+            onChange={this.changeHandler}
+          />
+
+          <button type="button" onClick={this.deleteProduct}>
+            Slett produkt
           </button>
         </form>
       </div>
