@@ -10,7 +10,6 @@ class Customers extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      _id: "",
       rowSelection: "single",
       columnDefs: [
         {
@@ -43,16 +42,17 @@ class Customers extends Component {
       .then((rowData) => this.setState({ rowData }))
       .catch((err) => console.log(err));
   }
+  selectedNodes()
 
-  deleteCustomer = () => {
-    const selectedRows = this.gridOptions.selectedNodes();
-    if (!selectedRows || selectedRows.length === 0) {
-      return;
-    }
-    const selectedRow = selectedRows[0];
-    window.rowDataserverside.splice(selectedRow.rowIndex, 1);
-    this.purgeServerSideCache();
-  };
+  // deleteCustomer = () => {
+  //   const selectedRows = this.gridOptions.selectedNodes();
+  //   if (!selectedRows || selectedRows.length == 0) {
+  //     return;
+  //   }
+  //   const selectedRow = selectedRows[0];
+  //   window.rowDataserverside.splice(selectedRow.rowIndex, 1);
+  //   this.purgeServerSideCache();
+  // };
 
   render() {
     return (
@@ -64,9 +64,9 @@ class Customers extends Component {
             height: 600,
           }}
         >
-          <button className="btn-danger" onClick={this.deleteCustomer}>
+          {/* <button className="btn-danger" onClick={this.deleteCustomer}>
             X
-          </button>
+          </button> */}
           <AgGridReact
             key={this.state.id}
             columnDefs={this.state.columnDefs}
