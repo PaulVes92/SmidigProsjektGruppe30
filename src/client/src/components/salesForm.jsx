@@ -1,6 +1,5 @@
 import React, { useState, getDay, Component } from "react";
 import Axios from "axios";
-import Calendar from "./datePicker";
 
 class SalesForm extends Component {
   constructor(props) {
@@ -230,9 +229,7 @@ class SalesForm extends Component {
           </div>
           <br /> <br />
           <h1 id="regKunde">Leietid</h1>
-          <div className="field2">
-            <Calendar />
-          </div>
+          <div className="field2"></div>
           <br></br>
           <button className="btns" type="submit">
             Lei ut :)
