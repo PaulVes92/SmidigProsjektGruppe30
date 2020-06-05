@@ -25,6 +25,8 @@ router.post("/", async (req, res) => {
     lastName: req.body.lastName,
     email: req.body.email,
     phoneNumber: req.body.phoneNumber,
+    size: req.body.size,
+    comment: req.body.comment,
     rentedDate: req.body.rentedDate,
     returnDate: req.body.returnDate,
   });
@@ -57,6 +59,14 @@ router.patch("/:id", getRent, async (req, res) => {
 
   if (req.body.phoneNumber != null) {
     res.rent.phoneNumber = req.body.phoneNumber;
+  }
+
+  if (req.body.size != null) {
+    res.rent.size = req.body.size;
+  }
+
+  if (req.body.comment != null) {
+    res.rent.comment = req.body.comment;
   }
 
   if (req.body.rentedDate != null) {

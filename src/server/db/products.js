@@ -22,6 +22,9 @@ const products = new mongoose.Schema({
   status: {
     type: String,
   },
+  productImage: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("Produkter", products);
