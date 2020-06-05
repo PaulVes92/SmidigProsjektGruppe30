@@ -16,6 +16,8 @@ class SalesForm extends Component {
       rentedDate: Date,
       returnDate: Date,
       shoppingCartArray: [],
+      pricesArray: [],
+      total: 0,
     };
   }
 
@@ -24,10 +26,12 @@ class SalesForm extends Component {
     Axios.get("http://localhost:8080/products")
       .then((res) => {
         console.log(res);
-        //console.log(res.data);
+        console.log(res.data);
         const shoppingCart = res.data;
-        console.log(shoppingCart);
+        //console.log(shoppingCart);
         this.filterProducts(shoppingCart);
+        console.log(this.state.shoppingCartArray);
+        this.priceTotal();
       })
       .catch((err) => {
         throw err;
@@ -43,9 +47,9 @@ class SalesForm extends Component {
           price: shoppingCart[i].price,
         });
 
-        console.log(this.state.productId);
-        console.log(this.state.productName);
-        console.log(this.state.price);
+        // console.log(this.state.productId);
+        // console.log(this.state.productName);
+        // console.log(this.state.price);
 
         const newCartItemObject = {
           productId: this.state.productId,
@@ -53,7 +57,7 @@ class SalesForm extends Component {
           price: this.state.price,
         };
 
-        console.log(newCartItemObject);
+        // console.log(newCartItemObject);
 
         const tempShoppingCart = this.state.shoppingCartArray;
         tempShoppingCart.push(newCartItemObject);
@@ -61,12 +65,30 @@ class SalesForm extends Component {
         this.setState({
           shoppingCartArray: tempShoppingCart,
         });
-
-        console.log(this.state.shoppingCartArray);
         return shoppingCart[i];
       }
     }
   }
+
+  priceTotal = () => {
+    for (var i = 0; i < this.state.shoppingCartArray.length; i++) {
+      console.log("added item price:");
+      console.log(this.state.shoppingCartArray[i].price);
+      this.state.pricesArray[i] = this.state.shoppingCartArray[i].price;
+      this.forceUpdate();
+    }
+    var sum = this.state.pricesArray.reduce(function (a, b) {
+      return a + b;
+    }, 0);
+    console.log("sum:");
+    console.log(sum);
+
+    this.setState({
+      total: sum,
+    });
+    console.log("this.state.total:");
+    console.log(this.state.total);
+  };
 
   changeHandler = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -199,11 +221,12 @@ class SalesForm extends Component {
                 <li>
                   PRODUKT ID: {shoppingCartArray.productId} <br />
                   PRODUKT NAVN: {shoppingCartArray.productName} <br />
-                  PRIS: {shoppingCartArray.price}
+                  PRIS: {shoppingCartArray.price} kr
                   <br />
                 </li>
               </ul>
             ))}
+            <h3>Totalpris: {this.state.total} kr</h3>
           </div>
           <br /> <br />
           <h1 id="regKunde">Leietid</h1>
