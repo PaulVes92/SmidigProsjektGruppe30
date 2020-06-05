@@ -166,3 +166,38 @@ form ::placeholder {
   margin-top: 15px;
   margin-right: 10px;
 }
+
+#headerAddProd{
+  font-size: 130%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+#headerDeleteCstm{
+  font-size: 130%;
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+#headerDeleteProd{
+  font-size: 130%;
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+#inputField{
+  border-radius: 5px;
+}
+
+#drpDownSize{
+  margin-left: 1%;
+}
+
+#drpDownStatus{
+  margin-left: 1%;
+}
+#delBtn{
+  margin-left: 1%;
+  border-radius: 10px;
+  background-color:  rgb(230, 230, 230);
+  box-shadow: #656472;
+  
+}

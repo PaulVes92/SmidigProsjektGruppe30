@@ -149,9 +149,10 @@ class AddProduct extends Component {
   render() {
     return (
       <div>
-        <h2>Registrer nytt produkt</h2>
+        <h2 id="headerAddProd">Registrer nytt produkt</h2>
         <form onSubmit={this.handleSubmit}>
           <input
+            id="inputField"
             type="text"
             placeholder="Produkt ID"
             name="productId"
@@ -159,6 +160,7 @@ class AddProduct extends Component {
             onChange={this.changeHandler}
           />
           <input
+            id="inputField"
             type="text"
             placeholder="Produkt Navn"
             name="productName"
@@ -166,6 +168,7 @@ class AddProduct extends Component {
             onChange={this.changeHandler}
           />
           <input
+            id="inputField"
             type="text"
             placeholder="Pris"
             name="price"
@@ -173,6 +176,7 @@ class AddProduct extends Component {
             onChange={this.changeHandler}
           />
           <input
+            id="inputField"
             type="text"
             placeholder="Kommentar"
             name="comment"
@@ -180,13 +184,14 @@ class AddProduct extends Component {
             onChange={this.changeHandler}
           />
           <input
+            id="inputField"
             type="text"
             placeholder="Kategori"
             name="category"
             value={this.category}
             onChange={this.changeHandler}
           />
-          <select name="size" value={this.size} onChange={this.changeHandler}>
+          <select id="drpDownSize" name="size" value={this.size} onChange={this.changeHandler}>
             <option>XS</option>
             <option>S</option>
             <option>M</option>
@@ -194,6 +199,7 @@ class AddProduct extends Component {
             <option>XL</option>
           </select>
           <select
+            id="drpDownStatus"
             name="status"
             value={this.status}
             onChange={this.changeHandler}
@@ -202,12 +208,13 @@ class AddProduct extends Component {
             <option>Utleid</option>
           </select>
 
-          <button type="submit">Legg til produkt</button>
+          <button id="delBtn" type="submit">Legg til produkt</button>
         </form>
 
-        <h2>Slett kunde</h2>
+        <h2 id="headerDeleteCstm">Slett kunde</h2>
         <form>
           <input
+            id="inputField"
             type="text"
             placeholder="Kundens tlfnr"
             name="phoneNumber"
@@ -215,13 +222,14 @@ class AddProduct extends Component {
             onChange={this.changeHandler}
           />
 
-          <button type="button" onClick={this.deleteCustomer}>
+          <button id="delBtn" type="button" onClick={this.deleteCustomer}>
             Slett Kunde
           </button>
         </form>
-        <h2>Slett produkt</h2>
+        <h2 id="headerDeleteProd">Slett produkt</h2>
         <form>
           <input
+            id="inputField"
             type="text"
             placeholder="Produkt ID"
             name="productId"
@@ -229,7 +237,7 @@ class AddProduct extends Component {
             onChange={this.changeHandler}
           />
 
-          <button type="button" onClick={this.deleteProduct}>
+          <button id="delBtn" type="button" onClick={this.deleteProduct}>
             Slett produkt
           </button>
         </form>
