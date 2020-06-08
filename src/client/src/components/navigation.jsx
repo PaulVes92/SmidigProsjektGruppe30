@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import Logo from "../repairable.png";
-import { Link } from "react-router-dom";
 
 class Navigation extends Component {
   render() {
@@ -74,9 +73,9 @@ class Navigation extends Component {
             borderTopLeftRadius: "45%",
             borderTopRightRadius: "45%",
           }}
-      >
-        Innlevering
-      </NavLink>
+        >
+          Innlevering
+        </NavLink>
 
         <NavLink
           className=".display-2 mt-3 mr-2 d-inline-block p-4"

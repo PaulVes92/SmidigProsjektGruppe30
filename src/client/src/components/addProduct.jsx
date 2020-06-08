@@ -16,22 +16,6 @@ class AddProduct extends Component {
     id: "",
   };
 
-  // getCustomers = () => {
-  //   console.log(this.state);
-  //   axios
-  //     .get("http://localhost:8080/customers/")
-  //     .then((res) => {
-  //       console.log(res);
-  //       console.log(res.data);
-  //       this.setState({
-  //         customerData: res.data,
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       throw err;
-  //     });
-  // };
-
   componentDidMount = () => {
     console.log(this.state);
     axios
@@ -64,7 +48,7 @@ class AddProduct extends Component {
   deleteProduct = () => {
     console.log(this.state.productData);
     for (var i = 0; i < this.state.productData.length; i++) {
-      if (this.state.productData[i].productId == this.state.productId) {
+      if (this.state.productData[i].productId === this.state.productId) {
         const productId = this.state.productData[i]._id;
 
         axios
@@ -87,15 +71,8 @@ class AddProduct extends Component {
     for (var i = 0; i < this.state.customerData.length; i++) {
       console.log("this.state.customerData[i].phoneNumber");
       console.log(this.state.customerData[i].phoneNumber);
-      if (this.state.customerData[i].phoneNumber == this.state.phoneNumber) {
-        console.log("deleted customer");
-        console.log(i);
-
-        console.log(this.state.customerData);
+      if (this.state.customerData[i].phoneNumber === this.state.phoneNumber) {
         const customerId = this.state.customerData[i]._id;
-        console.log(customerId);
-        console.log(this.state.id);
-        // concat();
 
         axios
           .delete(`http://localhost:8080/customers/${customerId}`)
@@ -191,7 +168,12 @@ class AddProduct extends Component {
             value={this.category}
             onChange={this.changeHandler}
           />
-          <select id="drpDownSize" name="size" value={this.size} onChange={this.changeHandler}>
+          <select
+            id="drpDownSize"
+            name="size"
+            value={this.size}
+            onChange={this.changeHandler}
+          >
             <option>XS</option>
             <option>S</option>
             <option>M</option>
@@ -208,7 +190,9 @@ class AddProduct extends Component {
             <option>Utleid</option>
           </select>
 
-          <button id="delBtn" type="submit">Legg til produkt</button>
+          <button id="delBtn" type="submit">
+            Legg til produkt
+          </button>
         </form>
 
         <h2 id="headerDeleteCstm">Slett kunde</h2>

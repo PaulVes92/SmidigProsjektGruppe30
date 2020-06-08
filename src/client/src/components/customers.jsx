@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 import { AgGridReact } from "ag-grid-react";
 
@@ -42,16 +41,6 @@ class Customers extends Component {
       .then((rowData) => this.setState({ rowData }))
       .catch((err) => console.log(err));
   }
-
-  // deleteCustomer = () => {
-  //   const selectedRows = this.gridOptions.selectedNodes();
-  //   if (!selectedRows || selectedRows.length == 0) {
-  //     return;
-  //   }
-  //   const selectedRow = selectedRows[0];
-  //   window.rowDataserverside.splice(selectedRow.rowIndex, 1);
-  //   this.purgeServerSideCache();
-  // };
 
   render() {
     return (

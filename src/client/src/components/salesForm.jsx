@@ -1,5 +1,5 @@
-import React, { useState, getDay, Component } from "react";
-import Axios from "axios";
+import React, { Component } from "react";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 
 class SalesForm extends Component {
@@ -22,16 +22,16 @@ class SalesForm extends Component {
     };
   }
 
+  //Function for getting products from database
   getProduct = () => {
     console.log(this.state);
-    Axios.get("http://localhost:8080/products")
+    axios
+      .get("http://localhost:8080/products")
       .then((res) => {
         console.log(res);
         console.log(res.data);
         const shoppingCart = res.data;
-        //console.log(shoppingCart);
         this.filterProducts(shoppingCart);
-        console.log(this.state.shoppingCartArray);
         this.priceTotal();
       })
       .catch((err) => {
@@ -39,9 +39,10 @@ class SalesForm extends Component {
       });
   };
 
+  //Function for filtering of the shopping cart
   filterProducts(shoppingCart) {
     for (var i = 0; i < shoppingCart.length; i++) {
-      if (shoppingCart[i].productId == this.state.productId) {
+      if (shoppingCart[i].productId === this.state.productId) {
         this.setState({
           productId: shoppingCart[i].productId,
           productName: shoppingCart[i].productName,
@@ -49,18 +50,12 @@ class SalesForm extends Component {
           size: shoppingCart[i].size,
         });
 
-        // console.log(this.state.productId);
-        // console.log(this.state.productName);
-        // console.log(this.state.price);
-
         const newCartItemObject = {
           productId: this.state.productId,
           productName: this.state.productName,
           price: this.state.price,
           size: this.state.size,
         };
-
-        // console.log(newCartItemObject);
 
         const tempShoppingCart = this.state.shoppingCartArray;
         tempShoppingCart.push(newCartItemObject);
@@ -73,30 +68,7 @@ class SalesForm extends Component {
     }
   }
 
-  priceTotal = () => {
-    for (var i = 0; i < this.state.shoppingCartArray.length; i++) {
-      console.log("added item price:");
-      console.log(this.state.shoppingCartArray[i].price);
-      this.state.pricesArray[i] = this.state.shoppingCartArray[i].price;
-      this.forceUpdate();
-    }
-    var sum = this.state.pricesArray.reduce(function (a, b) {
-      return a + b;
-    }, 0);
-    console.log("sum:");
-    console.log(sum);
-
-    this.setState({
-      total: sum,
-    });
-    console.log("this.state.total:");
-    console.log(this.state.total);
-  };
-
-  changeHandler = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
+  //Making a shopping cart that pushes items to database
   submitShoppingCart = () => {
     for (var i = 0; i < this.state.shoppingCartArray.length; i++) {
       const rntProduct = {
@@ -111,7 +83,8 @@ class SalesForm extends Component {
         returnDate: this.state.returnDate,
       };
 
-      Axios.post("http://localhost:8080/rents", rntProduct)
+      axios
+        .post("http://localhost:8080/rents", rntProduct)
         .then((res) => {
           console.log(res);
           console.log(res.data);
@@ -122,6 +95,45 @@ class SalesForm extends Component {
     }
   };
 
+  //Function for adding a total price to the shopping cart
+  priceTotal = () => {
+    for (var i = 0; i < this.state.shoppingCartArray.length; i++) {
+      this.state.pricesArray[i] = this.state.shoppingCartArray[i].price;
+      this.forceUpdate();
+    }
+    var sum = this.state.pricesArray.reduce(function (a, b) {
+      return a + b;
+    }, 0);
+
+    this.setState({
+      total: sum,
+    });
+  };
+
+  changeHandler = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleRecipts = () => {
+    const reciepts = {
+      productId: this.state.productId,
+      rentedDate: this.state.rentedDate,
+      lastName: this.state.lastName,
+      email: this.state.email,
+    };
+
+    axios
+      .post("http://localhost:8080/reciepts", reciepts)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        throw err;
+      });
+  };
+
+  //Pushing customers, rented products and reciepts to their respective database
   handleSubmit = () => {
     const customers = {
       firstName: this.state.firstName,
@@ -130,26 +142,10 @@ class SalesForm extends Component {
       phoneNumber: this.state.phoneNumber,
     };
     this.submitShoppingCart();
-    // const rntProduct = {
-    //   productId: this.state.productId,
-    //   productName: this.state.productName,
-    //   lastName: this.state.lastName,
-    //   email: this.state.email,
-    //   phoneNumber: this.state.phoneNumber,
-    //   rentedDate: this.state.rentedDate,
-    //   returnDate: this.state.returnDate,
-    // };
+    this.handleRecipts();
 
-    // Axios.post("http://localhost:8080/rents", rntProduct)
-    //   .then((res) => {
-    //     console.log(res);
-    //     console.log(res.data);
-    //   })
-    //   .catch((err) => {
-    //     throw err;
-    //   });
-
-    Axios.post("http://localhost:8080/customers", customers)
+    axios
+      .post("http://localhost:8080/customers", customers)
       .then((res) => {
         console.log(res);
         console.log(res.data);
@@ -251,9 +247,6 @@ class SalesForm extends Component {
             name="returnDate"
             onChange={this.changeHandler}
           />
-          {/* <div className="field2">
-            <Calendar value={this.state.returnDate} />
-          </div> */}
           <br></br>
           <button className="btns" type="submit">
             Gjennomfør utleie
