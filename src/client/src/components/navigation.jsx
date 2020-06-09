@@ -103,7 +103,7 @@ class Navigation extends Component {
         >
           Admin
         </NavLink>
-        <NavLink className="logoutBtn" to="/">
+        <NavLink className="logoutBtn" to="/login">
           Log out
         </NavLink>
       </Nav>
