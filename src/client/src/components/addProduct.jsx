@@ -48,7 +48,7 @@ class AddProduct extends Component {
   deleteProduct = () => {
     console.log(this.state.productData);
     for (var i = 0; i < this.state.productData.length; i++) {
-      if (this.state.productData[i].productId === this.state.productId) {
+      if (this.state.productData[i].productId == this.state.productId) {
         const productId = this.state.productData[i]._id;
 
         axios
@@ -71,7 +71,7 @@ class AddProduct extends Component {
     for (var i = 0; i < this.state.customerData.length; i++) {
       console.log("this.state.customerData[i].phoneNumber");
       console.log(this.state.customerData[i].phoneNumber);
-      if (this.state.customerData[i].phoneNumber === this.state.phoneNumber) {
+      if (this.state.customerData[i].phoneNumber == this.state.phoneNumber) {
         const customerId = this.state.customerData[i]._id;
 
         axios
