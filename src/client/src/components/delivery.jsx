@@ -20,6 +20,7 @@ class Deliveries extends Component {
         this.setState({
           deliveryData: res.data,
         });
+        console.log("this.state.deliveryData");
         console.log(this.state.deliveryData);
       })
       .catch((err) => {
@@ -37,6 +38,8 @@ class Deliveries extends Component {
         console.log(res);
         console.log(res.data);
         const deliveryCart = res.data;
+        console.log("deliveryCart");
+        console.log(deliveryCart);
         this.filterProducts(deliveryCart);
         console.log("this.state.deliveryCartArray");
         console.log(this.state.deliveryCartArray);
@@ -48,7 +51,7 @@ class Deliveries extends Component {
 
   filterProducts(deliveryCart) {
     for (var i = 0; i < deliveryCart.length; i++) {
-      if (deliveryCart[i].productId === this.state.productId) {
+      if (deliveryCart[i].productId == this.state.productId) {
         this.setState({
           productId: deliveryCart[i].productId,
           productName: deliveryCart[i].productName,
