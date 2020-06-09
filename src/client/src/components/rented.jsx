@@ -76,7 +76,7 @@ class Rented extends Component {
         <div
           className="ag-theme-balham"
           style={{
-            width: 1410,
+            width: 1610,
             height: 600,
           }}
         >

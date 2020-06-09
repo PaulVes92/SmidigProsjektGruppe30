@@ -48,7 +48,7 @@ class Customers extends Component {
         <div
           className="ag-theme-balham"
           style={{
-            width: 1410,
+            width: 810,
             height: 600,
           }}
         >
