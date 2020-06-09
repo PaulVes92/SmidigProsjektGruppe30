@@ -20,9 +20,8 @@ router.get("/:id", getReciept, (req, res) => {
 //Create one reciept
 router.post("/", async (req, res) => {
   const reciept = new Reciept({
-    orderNumber: req.body.orderNumber,
-    date: req.body.date,
-    lastName: req.body.lastName,
+    productId: req.body.productId,
+    rentedDate: req.body.rentedDate,
     email: req.body.email,
   });
 
@@ -36,16 +35,12 @@ router.post("/", async (req, res) => {
 
 //Update one reciept
 router.patch("/:id", getReciept, async (req, res) => {
-  if (req.body.orderNumber != null) {
-    res.reciept.orderNumber = req.body.orderNumber;
+  if (req.body.productId != null) {
+    res.reciept.productId = req.body.productId;
   }
 
-  if (req.body.date != null) {
-    res.reciept.date = req.body.date;
-  }
-
-  if (req.body.lastName != null) {
-    res.reciept.lastName = req.body.lastName;
+  if (req.body.rentedDate != null) {
+    res.reciept.rentedDate = req.body.rentedDate;
   }
 
   if (req.body.email != null) {

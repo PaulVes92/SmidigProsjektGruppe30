@@ -1,34 +1,40 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { withRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 
-class Login extends Component {
+class SignUp extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       userId: "",
       password: "",
+      confirm: "",
       errorMsg: null,
     };
   }
 
   onUserIdChange = (event) => {
-    this.setState({
-      userId: event.target.value,
-    });
+    this.setState({ userId: event.target.value, errorMsg: null });
   };
 
   onPasswordChange = (event) => {
-    this.setState({
-      password: event.target.value,
-    });
+    this.setState({ password: event.target.value, errorMsg: null });
   };
 
-  doLogin = async () => {
-    const { userId, password } = this.setState;
+  onConfirmChange = (event) => {
+    this.setState({ confirm: event.target.value, errorMsg: null });
+  };
 
-    const url = "/login";
+  doSignUp = async () => {
+    const { userId, password, confirm } = this.state;
+
+    if (confirm !== password) {
+      this.setState({ errorMsg: "Passwords do not match" });
+      return;
+    }
+
+    const url = "http://localhost:8080/users";
 
     const payload = { userId: userId, password: password };
 
@@ -44,14 +50,15 @@ class Login extends Component {
       });
     } catch (err) {
       this.setState({ errorMsg: "Failed to connect to server: " + err });
-    }
-
-    if (response.status === 401) {
-      this.setState({ errorMsg: "invalid userId/password" });
       return;
     }
 
-    if (response.status !== 204) {
+    if (response.status === 400) {
+      this.setState({ errorMsg: "Invalid userId/password" });
+      return;
+    }
+
+    if (response.status !== 201) {
       this.setState({
         errorMsg:
           "Error when connecting to server: status code " + response.status,
@@ -73,47 +80,52 @@ class Login extends Component {
         </div>
       );
     }
+
+    let confirmMsg = "Ok";
+    if (this.state.confirm !== this.state.password) {
+      confirmMsg = "Not matching";
+    }
+
     return (
       <div>
-        <div className="loginArea">
-          <h2>Innlogging</h2>
-          <form>
+        <div className="signupArea">
+          <h2>Registrering</h2>
+          <div>
             <input
-              id="email"
+              className="mt-3"
               type="text"
-              name="userId"
               placeholder="Username"
               value={this.state.userId}
               onChange={this.onUserIdChange}
             />
-
+          </div>
+          <div>
             <input
               className="mt-3"
-              id="password"
               type="password"
-              name="password"
               placeholder="Password"
               value={this.state.password}
               onChange={this.onPasswordChange}
             />
-            <div>
-              {error}
-
-              <div
-                className="btn btn-primary btn-sm mt-2"
-                onClick={this.doLogin}
-              >
-                Log In
-              </div>
-            </div>
-            <Link className="btn btn-primary btn-sm mt-2" to="/signUp">
-              Register
-            </Link>
-          </form>
+          </div>
+          <div>
+            <input
+              className="mt-3"
+              type="password"
+              placeholder="Type password again"
+              value={this.state.confirm}
+              onChange={this.onConfirmChange}
+            />
+            <div className="mt-3">{confirmMsg}</div>
+          </div>
+          {error}
+          <button className="btn btn-primary mt-3" onClick={this.doSignUp}>
+            Sign up
+          </button>
         </div>
       </div>
     );
   }
 }
 
-export default Login;
+export default withRouter(SignUp);

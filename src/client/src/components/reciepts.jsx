@@ -12,20 +12,22 @@ class Reciepts extends Component {
       columnDefs: [
         {
           headerName: "OrdreNr",
-          field: "orderNumber",
+          field: "productId",
           sortable: true,
           filter: true,
         },
         {
           headerName: "Utleiedato",
-          field: "date",
+          field: "rentedDate",
           sortable: true,
           filter: true,
         },
-        { headerName: "Kundens epost", 
-          field: "email", 
-          sortable: true, 
-          filter: true }
+        {
+          headerName: "Kundens epost",
+          field: "email",
+          sortable: true,
+          filter: true,
+        },
       ],
       rowData: null,
     };

@@ -18,11 +18,13 @@ const products = require("./routes/product");
 const customers = require("./routes/customer");
 const reciepts = require("./routes/reciept");
 const rents = require("./routes/rent");
+const users = require("./routes/user");
 
 app.use("/products", products);
 app.use("/customers", customers);
 app.use("/reciepts", reciepts);
 app.use("/rents", rents);
+app.use("/users", users);
 
 //Express server
 const port = process.env.PORT || 8080;

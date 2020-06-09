@@ -1,15 +1,12 @@
 const mongoose = require("mongoose");
 
 const reciepts = new mongoose.Schema({
-  orderNumber: {
+  productId: {
     type: Number,
   },
-  date: {
+  rentedDate: {
     type: Date,
     default: Date.now,
-  },
-  lastName: {
-    type: String,
   },
   email: {
     type: String,

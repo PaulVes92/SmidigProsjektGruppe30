@@ -37,8 +37,6 @@ class Deliveries extends Component {
         console.log(res);
         console.log(res.data);
         const deliveryCart = res.data;
-        console.log("deliveryCart");
-        console.log(deliveryCart);
         this.filterProducts(deliveryCart);
         console.log("this.state.deliveryCartArray");
         console.log(this.state.deliveryCartArray);
@@ -50,9 +48,7 @@ class Deliveries extends Component {
 
   filterProducts(deliveryCart) {
     for (var i = 0; i < deliveryCart.length; i++) {
-      if (deliveryCart[i].productId == this.state.productId) {
-        console.log(deliveryCart[i]);
-        console.log("deliveryCart[i]");
+      if (deliveryCart[i].productId === this.state.productId) {
         this.setState({
           productId: deliveryCart[i].productId,
           productName: deliveryCart[i].productName,
@@ -66,8 +62,6 @@ class Deliveries extends Component {
           comment: this.state.comment,
           size: this.state.size,
         };
-
-        // console.log(newDeliveryItemObject);
 
         const tempDeliveryCart = this.state.deliveryCartArray;
         tempDeliveryCart.push(newDeliveryItemObject);
