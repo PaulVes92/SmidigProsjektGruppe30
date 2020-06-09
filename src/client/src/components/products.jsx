@@ -10,31 +10,55 @@ class Products extends Component {
     super(props);
     this.state = {
       columnDefs: [
-        { headerName: "Id", field: "productId", sortable: true, filter: true ,resizable:true},
+        {
+          headerName: "Id",
+          field: "productId",
+          sortable: true,
+          filter: true,
+          resizable: true,
+        },
         {
           headerName: "Navn",
           field: "productName",
           sortable: true,
           filter: true,
-          resizable:true
+          resizable: true,
         },
-        { headerName: "Pris", field: "price", sortable: true, filter: true, resizable:true },
         {
-          headerName: "Kommentarer",
+          headerName: "Pris",
+          field: "price",
+          sortable: true,
+          filter: true,
+          resizable: true,
+        },
+        {
+          headerName: "Skade/ slitasje",
           field: "comment",
           sortable: true,
           filter: true,
-          resizable:true
+          resizable: true,
         },
         {
           headerName: "Produktkategori",
           field: "category",
           sortable: true,
           filter: true,
-          resizable:true
+          resizable: true,
         },
-        { headerName: "Størrelse", field: "size", sortable: true, filter: true, resizable:true },
-        { headerName: "Status", field: "status", sortable: true, filter: true, resizable:true },
+        {
+          headerName: "Størrelse",
+          field: "size",
+          sortable: true,
+          filter: true,
+          resizable: true,
+        },
+        {
+          headerName: "Status",
+          field: "status",
+          sortable: true,
+          filter: true,
+          resizable: true,
+        },
       ],
       rowData: null,
     };
