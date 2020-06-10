@@ -103,7 +103,7 @@ class Login extends Component {
                 className="btn btn-primary btn-sm mt-2"
                 onClick={this.doLogin}
               >
-                Log In
+                Logg Inn
               </div>
             </div>
             <Link className="btn btn-primary btn-sm mt-2" to="/signUp">

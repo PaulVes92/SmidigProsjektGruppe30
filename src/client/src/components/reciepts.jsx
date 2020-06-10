@@ -45,7 +45,7 @@ class Reciepts extends Component {
       <div
         className="ag-theme-balham"
         style={{
-          width: 1000,
+          width: 610,
           height: 600,
         }}
       >

@@ -42,7 +42,7 @@ class SalesForm extends Component {
   //Function for filtering of the shopping cart
   filterProducts(shoppingCart) {
     for (var i = 0; i < shoppingCart.length; i++) {
-      if (shoppingCart[i].productId === this.state.productId) {
+      if (shoppingCart[i].productId == this.state.productId) {
         this.setState({
           productId: shoppingCart[i].productId,
           productName: shoppingCart[i].productName,
@@ -169,7 +169,7 @@ class SalesForm extends Component {
   render() {
     return (
       <div className="container2">
-        <h1 id="regKunde">Registrer ny kunde</h1>
+        <h1 id="regKunde">Utleieskjema</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             className="field"
