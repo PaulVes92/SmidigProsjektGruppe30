@@ -1,5 +1,5 @@
 const express = require("express");
-const Rent = require("../db/rents");
+const Rent = require("../../db/models/rents");
 const router = express.Router();
 
 //Get all rents

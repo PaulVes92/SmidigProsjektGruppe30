@@ -1,5 +1,5 @@
 const express = require("express");
-const Reciept = require("../db/reciepts");
+const Reciept = require("../../db/models/reciepts");
 const router = express.Router();
 
 //Get all reciepts

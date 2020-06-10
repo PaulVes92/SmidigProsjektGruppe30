@@ -2,8 +2,16 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import Logo from "../repairable.png";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../actions/authActions";
 
 class Navigation extends Component {
+  onLogoutClick = (e) => {
+    e.preventDefault();
+    this.props.logoutUser();
+  };
+
   render() {
     return (
       <Nav className="py-0 justify-content-center fixed-top">
@@ -89,12 +97,32 @@ class Navigation extends Component {
         >
           Admin
         </NavLink>
-        <NavLink className="logoutBtn" to="/login">
-          Logg av
-        </NavLink>
+        <button
+          style={{
+            left: "400px",
+            width: "150px",
+            borderRadius: "3px",
+            letterSpacing: "1.5px",
+            marginTop: "1rem",
+            color: "#ffffff",
+          }}
+          onClick={this.onLogoutClick}
+          className="btn btn-large waves-effect waves-light hoverable accent-3"
+        >
+          Logout
+        </button>
       </Nav>
     );
   }
 }
 
-export default Navigation;
+Navigation.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logoutUser })(Navigation);

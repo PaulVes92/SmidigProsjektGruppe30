@@ -1,5 +1,5 @@
 const express = require("express");
-const Customer = require("../db/customers");
+const Customer = require("../../db/models/customers");
 const router = express.Router();
 
 //Get all customers

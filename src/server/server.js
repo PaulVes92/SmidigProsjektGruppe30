@@ -2,11 +2,20 @@ const express = require("express");
 const connectDB = require("./db/connection");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const passport = require("passport");
 
 //Middleware
 app = express();
 app.use(cors());
+//BodyParser middleware
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./config/passport")(passport);
+
+//Connect to DB
 connectDB();
 
 app.get("/", (req, res) => {
@@ -14,17 +23,17 @@ app.get("/", (req, res) => {
 });
 
 //Import routes
-const products = require("./routes/product");
-const customers = require("./routes/customer");
-const reciepts = require("./routes/reciept");
-const rents = require("./routes/rent");
-const users = require("./routes/user");
+const products = require("./routes/api/product");
+const customers = require("./routes/api/customer");
+const reciepts = require("./routes/api/reciept");
+const rents = require("./routes/api/rent");
+const users = require("./routes/api/user");
 
 app.use("/products", products);
 app.use("/customers", customers);
 app.use("/reciepts", reciepts);
 app.use("/rents", rents);
-app.use("/users", users);
+app.use("/api/users", users);
 
 //Express server
 const port = process.env.PORT || 8080;

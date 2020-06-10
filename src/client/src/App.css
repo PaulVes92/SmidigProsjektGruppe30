@@ -198,7 +198,7 @@ form ::placeholder {
 }
 
 .signupArea {
-  width: 100px;
+  width: 270px;
   padding-top: 50px;
   display: inline-flex;
   flex-direction: column;
@@ -210,7 +210,7 @@ form ::placeholder {
 }
 
 .loginArea {
-  width: 100px;
+  width: 270px;
   padding-top: 50px;
   display: inline-flex;
   flex-direction: column;

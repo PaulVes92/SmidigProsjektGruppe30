@@ -12,9 +12,6 @@ class Deliveries extends Component {
     newDamageId: "",
   };
 
-<<<<<<< HEAD
-  getProducts = () => {
-=======
   componentDidMount = () => {
     axios
       .get("http://localhost:8080/rents")
@@ -34,7 +31,6 @@ class Deliveries extends Component {
 
   getRents = () => {
     console.log("this.state i getRents:");
->>>>>>> 4357ee91ce975c16ab82e899657af44c95824356
     console.log(this.state);
     axios
       .get("http://localhost:8080/rents")
