@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+
 class Deliveries extends Component {
   state = {
     productId: "",
@@ -10,7 +11,7 @@ class Deliveries extends Component {
     deliveryData: [],
   };
 
-  getProduct = () => {
+  getProducts = () => {
     console.log(this.state);
     axios
       .get("http://localhost:8080/products")

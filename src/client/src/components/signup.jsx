@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 
 class SignUp extends React.Component {
@@ -68,7 +68,7 @@ class SignUp extends React.Component {
 
     this.setState({ errorMsg: null });
     this.props.updateLoggedInUserId(userId);
-    this.props.history.push("/");
+    this.props.history.push("/customers");
   };
 
   render() {
@@ -119,9 +119,13 @@ class SignUp extends React.Component {
             <div className="mt-3">{confirmMsg}</div>
           </div>
           {error}
-          <button className="btn btn-primary mt-3" onClick={this.doSignUp}>
+          <Link
+            className="btn btn-primary mt-3"
+            onClick={this.doSignUp}
+            to="/login"
+          >
             Sign up
-          </button>
+          </Link>
         </div>
       </div>
     );
