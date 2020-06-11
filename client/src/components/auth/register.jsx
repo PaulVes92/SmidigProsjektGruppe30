@@ -106,11 +106,7 @@ class Register extends Component {
                 <span className="red-text">{errors.password2}</span>
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                <button
-                  className="btn btn-primary mt-3"
-                  type="submit"
-                  to="/login"
-                >
+                <button className="btn btn-primary mt-3" type="submit" to="/">
                   Sign up
                 </button>
               </div>
