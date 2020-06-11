@@ -4,8 +4,6 @@
 
 html,
 #root > div {
-  /* height: 100vh;
-  background-color: #ebe1e1; */
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
@@ -58,10 +56,6 @@ html,
   padding-left: 5%;
   color: #656472;
 }
-
-/* div {
-  background-color: #ebe1e1;
-} */
 
 .nav {
   background-color: #656472;
@@ -195,28 +189,4 @@ form ::placeholder {
   border-radius: 10px;
   background-color: rgb(230, 230, 230);
   box-shadow: #656472;
-}
-
-.signupArea {
-  width: 270px;
-  padding-top: 50px;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  position: fixed;
-  top: 200px;
-  right: 850px;
-  column-gap: 50px;
-}
-
-.loginArea {
-  width: 270px;
-  padding-top: 50px;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  position: fixed;
-  top: 200px;
-  right: 850px;
-  column-gap: 50px;
 }

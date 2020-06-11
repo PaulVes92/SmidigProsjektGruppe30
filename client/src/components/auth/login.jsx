@@ -1,30 +1,33 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import { registerUser } from "../../actions/authActions";
-import classnames from "classnames";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { loginUser } from "../../actions/authActions";
+import classnames from "classnames";
 
-class Register extends Component {
+class Login extends Component {
   constructor() {
     super();
     this.state = {
       email: "",
       password: "",
-      password2: "",
       errors: {},
     };
   }
 
   componentDidMount() {
-    // If logged in and user navigates to Register page, should redirect them to dashboard
+    // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/products");
     }
   }
 
   componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/products"); // push user to products when they login
+    }
+
     if (nextProps.errors) {
       this.setState({
         errors: nextProps.errors,
@@ -38,29 +41,28 @@ class Register extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const newUser = {
+    const userData = {
       email: this.state.email,
       password: this.state.password,
-      password2: this.state.password2,
     };
 
-    this.props.registerUser(newUser, this.props.history);
+    this.props.loginUser(userData);
   };
 
   render() {
     const { errors } = this.state;
+
     return (
       <div className="container">
-        <div className="row">
-          <div className="col s8 offset-s2">
-            <Link to="/" className="btn-flat waves-effect">
-              <i className="material-icons left">keyboard_backspace</i> Back to
-              home
-            </Link>
+        <div style={{ marginTop: "4rem" }} className="row">
+          <div className="col s8 offset-s0">
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
               <h4>
-                <b>Register</b> below
+                <b>Login</b> below
               </h4>
+              <p className="grey-text text-darken-1">
+                Don't have an account? <Link to="/register">Register</Link>
+              </p>
             </div>
             <form noValidate onSubmit={this.onSubmit}>
               <div className="input-field col s12">
@@ -71,11 +73,14 @@ class Register extends Component {
                   id="email"
                   type="email"
                   className={classnames("", {
-                    invalid: errors.email,
+                    invalid: errors.email || errors.emailnotfound,
                   })}
                 />
-                <label htmlFor="email">UserId</label>
-                <span className="red-text">{errors.email}</span>
+                <label htmlFor="email">Email</label>
+                <span className="red-text">
+                  {errors.email}
+                  {errors.emailnotfound}
+                </span>
               </div>
               <div className="input-field col s12">
                 <input
@@ -85,33 +90,27 @@ class Register extends Component {
                   id="password"
                   type="password"
                   className={classnames("", {
-                    invalid: errors.password,
+                    invalid: errors.password || errors.passwordincorrect,
                   })}
                 />
-                <label htmlFor="password">Password</label>
-                <span className="red-text">{errors.password}</span>
-              </div>
-              <div className="input-field col s12">
-                <input
-                  onChange={this.onChange}
-                  value={this.state.password2}
-                  error={errors.password2}
-                  id="password2"
-                  type="password"
-                  className={classnames("", {
-                    invalid: errors.password2,
-                  })}
-                />
-                <label htmlFor="password2">Confirm Password</label>
-                <span className="red-text">{errors.password2}</span>
+                <label htmlFor="password">Passord</label>
+                <span className="red-text">
+                  {errors.password}
+                  {errors.passwordincorrect}
+                </span>
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                 <button
-                  className="btn btn-primary mt-3"
+                  style={{
+                    width: "150px",
+                    borderRadius: "3px",
+                    letterSpacing: "1.5px",
+                    marginTop: "1rem",
+                  }}
                   type="submit"
-                  to="/login"
+                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
                 >
-                  Sign up
+                  Login
                 </button>
               </div>
             </form>
@@ -122,8 +121,8 @@ class Register extends Component {
   }
 }
 
-Register.propTypes = {
-  registerUser: PropTypes.func.isRequired,
+Login.propTypes = {
+  loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
 };
@@ -133,40 +132,35 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, { registerUser })(withRouter(Register));
-// class SignUp extends React.Component {
+export default connect(mapStateToProps, { loginUser })(Login);
+
+// class Login extends Component {
 //   constructor(props) {
 //     super(props);
 
 //     this.state = {
 //       userId: "",
 //       password: "",
-//       confirm: "",
 //       errorMsg: null,
 //     };
 //   }
 
 //   onUserIdChange = (event) => {
-//     this.setState({ userId: event.target.value, errorMsg: null });
+//     this.setState({
+//       userId: event.target.value,
+//     });
 //   };
 
 //   onPasswordChange = (event) => {
-//     this.setState({ password: event.target.value, errorMsg: null });
+//     this.setState({
+//       password: event.target.value,
+//     });
 //   };
 
-//   onConfirmChange = (event) => {
-//     this.setState({ confirm: event.target.value, errorMsg: null });
-//   };
+//   doLogin = async () => {
+//     const { userId, password } = this.setState;
 
-//   doSignUp = async () => {
-//     const { userId, password, confirm } = this.state;
-
-//     if (confirm !== password) {
-//       this.setState({ errorMsg: "Passwords do not match" });
-//       return;
-//     }
-
-//     const url = "http://localhost/api/users/register";
+//     const url = "http://localhost/api/users/login";
 
 //     const payload = { userId: userId, password: password };
 
@@ -182,15 +176,14 @@ export default connect(mapStateToProps, { registerUser })(withRouter(Register));
 //       });
 //     } catch (err) {
 //       this.setState({ errorMsg: "Failed to connect to server: " + err });
+//     }
+
+//     if (response.status === 401) {
+//       this.setState({ errorMsg: "invalid userId/password" });
 //       return;
 //     }
 
-//     if (response.status === 400) {
-//       this.setState({ errorMsg: "Invalid userId/password" });
-//       return;
-//     }
-
-//     if (response.status !== 201) {
+//     if (response.status !== 204) {
 //       this.setState({
 //         errorMsg:
 //           "Error when connecting to server: status code " + response.status,
@@ -200,7 +193,7 @@ export default connect(mapStateToProps, { registerUser })(withRouter(Register));
 
 //     this.setState({ errorMsg: null });
 //     this.props.updateLoggedInUserId(userId);
-//     this.props.history.push("/customers");
+//     this.props.history.push("/");
 //   };
 
 //   render() {
@@ -212,56 +205,47 @@ export default connect(mapStateToProps, { registerUser })(withRouter(Register));
 //         </div>
 //       );
 //     }
-
-//     let confirmMsg = "Ok";
-//     if (this.state.confirm !== this.state.password) {
-//       confirmMsg = "Not matching";
-//     }
-
 //     return (
 //       <div>
-//         <div className="signupArea">
-//           <h2>Registrering</h2>
-//           <div>
+//         <div className="loginArea">
+//           <h2>Innlogging</h2>
+//           <form>
 //             <input
-//               className="mt-3"
+//               id="userId"
 //               type="text"
+//               name="userId"
 //               placeholder="Username"
 //               value={this.state.userId}
 //               onChange={this.onUserIdChange}
 //             />
-//           </div>
-//           <div>
+
 //             <input
 //               className="mt-3"
+//               id="password"
 //               type="password"
+//               name="password"
 //               placeholder="Password"
 //               value={this.state.password}
 //               onChange={this.onPasswordChange}
 //             />
-//           </div>
-//           <div>
-//             <input
-//               className="mt-3"
-//               type="password"
-//               placeholder="Type password again"
-//               value={this.state.confirm}
-//               onChange={this.onConfirmChange}
-//             />
-//             <div className="mt-3">{confirmMsg}</div>
-//           </div>
-//           {error}
-//           <Link
-//             className="btn btn-primary mt-3"
-//             onClick={this.doSignUp}
-//             to="/login"
-//           >
-//             Sign up
-//           </Link>
+//             <div>
+//               {error}
+
+//               <div
+//                 className="btn btn-primary btn-sm mt-2"
+//                 onClick={this.doLogin}
+//               >
+//                 Logg Inn
+//               </div>
+//             </div>
+//             <Link className="btn btn-primary btn-sm mt-2" to="/signUp">
+//               Register
+//             </Link>
+//           </form>
 //         </div>
 //       </div>
 //     );
 //   }
 // }
 
-// export default SignUp;
+// export default Login;

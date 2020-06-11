@@ -170,7 +170,7 @@ class SalesForm extends Component {
     return (
       <div className="container2">
         <h1 id="regKunde">Utleieskjema</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form className="ml-2" onSubmit={this.handleSubmit}>
           <input
             className="field"
             type="text"

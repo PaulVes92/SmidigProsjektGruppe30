@@ -79,19 +79,12 @@ class Deliveries extends Component {
   }
 
   deleteCart = () => {
-    // console.log(this.state.deliveryCartArray);
     for (var i = 0; i < this.state.deliveryData.length; i++) {
       if (this.state.deliveryData[i].productId == this.state.productId) {
-        // console.log("this.state.deliveryData[i].productId");
-        // console.log(this.state.deliveryData[i].productId);
-        // console.log("this.state.deliveryData");
-        // console.log(this.state.deliveryData);
         const cartItemId = this.state.deliveryData[i]._id;
         this.setState({
           newDamageId: this.state.deliveryData[i]._id,
         });
-        // console.log(cartItemId);
-        // console.log(this.state.id);
 
         axios
           .delete(`http://localhost:8080/rents/${cartItemId}`)
@@ -149,43 +142,82 @@ class Deliveries extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Leveranse</h2>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            placeholder="Produkt ID"
-            name="productId"
-            value={this.productId}
-            onChange={this.changeHandler}
-          />
-          <button type="button" onClick={this.getRents}>
-            Legg til leveranse
-          </button>
-
-          <div>
-            {this.state.deliveryCartArray.map((deliveryCartArray, id) => (
-              <ul key={deliveryCartArray._id}>
-                <li>
-                  PRODUKT ID: {deliveryCartArray.productId} <br />
-                  PRODUKT NAVN: {deliveryCartArray.productName} <br />
-                  STR: {deliveryCartArray.size} <br />
-                  Slitasje: {deliveryCartArray.comment}
-                  <br />
-                </li>
-              </ul>
-            ))}
+      <div className="container">
+        <div style={{ marginTop: "4rem" }} className="row">
+          <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+            <div>
+              <h2
+                style={{
+                  fontSize: "130%",
+                  marginTop: "5%",
+                  marginBottom: "2%",
+                }}
+              >
+                Leveranse
+              </h2>
+            </div>
+            <form noValidate onSubmit={this.handleSubmit}>
+              <div className="input-field col s12">
+                <input
+                  type="text"
+                  placeholder="Produkt ID"
+                  name="productId"
+                  value={this.productId}
+                  onChange={this.changeHandler}
+                />
+                <button
+                  style={{
+                    width: "150px",
+                    borderRadius: "3px",
+                    letterSpacing: "1.5px",
+                    marginTop: "1rem",
+                    backgroundColor: "antiquewhite",
+                  }}
+                  type="button"
+                  onClick={this.getRents}
+                  className="btn btn-large waves-effect waves-light hoverable accent-3"
+                >
+                  Legg til leveranse
+                </button>
+              </div>
+              <div>
+                {this.state.deliveryCartArray.map((deliveryCartArray, id) => (
+                  <ul key={deliveryCartArray._id}>
+                    <li>
+                      PRODUKT ID: {deliveryCartArray.productId} <br />
+                      PRODUKT NAVN: {deliveryCartArray.productName} <br />
+                      STR: {deliveryCartArray.size} <br />
+                      Slitasje: {deliveryCartArray.comment}
+                      <br />
+                    </li>
+                  </ul>
+                ))}
+              </div>
+              <div className="input-field col s12">
+                <input
+                  type="text"
+                  placeholder="Skader/slitasje"
+                  name="comment"
+                  value={this.comment}
+                  onChange={this.changeHandler}
+                />
+                <button
+                  style={{
+                    width: "150px",
+                    borderRadius: "3px",
+                    letterSpacing: "1.5px",
+                    marginTop: "1rem",
+                    backgroundColor: "antiquewhite",
+                  }}
+                  type="submit"
+                  className="btn btn-large waves-effect waves-light hoverable accent-3"
+                >
+                  Lever
+                </button>
+              </div>
+            </form>
           </div>
-          <br />
-          <input
-            type="text"
-            placeholder="Skader/slitasje"
-            name="comment"
-            value={this.comment}
-            onChange={this.changeHandler}
-          />
-          <button type="submit"> Lever </button>
-        </form>
+        </div>
       </div>
     );
   }

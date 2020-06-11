@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
+import "./App.css";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -15,11 +15,10 @@ import SalesForm from "./components/salesForm";
 import Reciepts from "./components/reciepts";
 import Rented from "./components/rented";
 import Login from "./components/auth/login";
-import AddProduct from "./components/addProduct";
+import Admin from "./components/admin";
 import Delivery from "./components/delivery";
 import Register from "./components/auth/register";
 import PrivateRoute from "./components/private-route/privateRoute";
-import Dashboard from "./components/dashboard";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -64,11 +63,7 @@ class App extends Component {
                   <PrivateRoute exact path="/reciepts" component={Reciepts} />
                   <PrivateRoute exact path="/delivery" component={Delivery} />
                   <PrivateRoute exact path="/rented" component={Rented} />
-                  <PrivateRoute
-                    exact
-                    path="/addProduct"
-                    component={AddProduct}
-                  />
+                  <PrivateRoute exact path="/addProduct" component={Admin} />
                 </Switch>
               </div>
             </div>

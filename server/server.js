@@ -22,6 +22,8 @@ app.get("/", (req, res) => {
   res.send("HOME");
 });
 
+app.use(express.static(__dirname + "/public"));
+
 //Import routes
 const products = require("./routes/api/product");
 const customers = require("./routes/api/customer");
