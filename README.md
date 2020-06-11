@@ -1,7 +1,7 @@
 ## To start the server
 
 Before you start the servers you need to have npm installed from [https://nodejs.org/en/download/] install the LTS version, you also need to install yarn from [https://yarnpkg.com/getting-started/install]. When both dependecies are installed you need to open the terminal in either on you pc or in you're prefered editor, then you need to use cd client and run yarn install then you need to write cd .. to go out one folder. Then you need to write cd server and run yarn install.
-After that you need to make a .env file in the server folder and add DB_CONNECTION=19220de3-09d3-414d-ae9b-fa432a4593c6 after that you can start the website.
+After that you need to make a .env file in the server folder and add DB_CONNECTION=anwyizrt after that you can start the website.
 
 ## Available Scripts
 
