@@ -1,6 +1,6 @@
-## Before you start the server
+## To start the server
 
-Before you start the server you need to have npm installed from [https://nodejs.org/en/download/]. Install the LTS version. You also need to install yarn from [https://yarnpkg.com/getting-started/install]. When both dependecies are installed you have to open the terminal either on your pc or in you're preferred editor. Then you have to cd into client and run yarn install. Open a new window in terminal, og type cd .. to go back to root. cd into server and run yarn install from there.
+Before you start the server you need to have npm installed from [https://nodejs.org/en/download/]. Install the LTS version. You also need to install yarn from [https://yarnpkg.com/getting-started/install]. When both dependecies are installed you have to open the terminal either on your pc or in your preferred editor. Then you have to cd into client and run yarn install. Open a new window in terminal, og type cd .. to go back to root. cd into server and run yarn install from there.
 
 ## Available Scripts
 
